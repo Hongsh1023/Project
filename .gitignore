@@ -10,6 +10,8 @@
 *.sqlite3
 
 ### Eclipse ###
+Servers/
+Server/
 .metadata
 bin/
 tmp/
