@@ -14,4 +14,5 @@ Build Path - Project Facets - Dynamic Web Module, JAVA, JavaScript 체크 - Runt
 
 ## 관련 문서
 <A HREF = "https://docs.google.com/spreadsheets/d/1NjvXzuil5-PWvp-wA1kokRoYaZAMm3FUV1vzWqUtsoQ/edit#gid=574015469">테이블 명세서 / 인스턴스 명세서</A><br>
-<A HREF = "https://docs.google.com/presentation/d/1U1gJqkgtUXfSZOqZbtKYwxfTerUFEJa4EZ26gZFRVHg/edit?usp=sharing">JAVA PPT</A>
+<A HREF = "https://docs.google.com/presentation/d/1U1gJqkgtUXfSZOqZbtKYwxfTerUFEJa4EZ26gZFRVHg/edit?usp=sharing">JAVA PPT</A><br>
+<A HREF = "https://drive.google.com/file/d/1o66fCO5lunkEdL_A8Kw_EbvmSh8zt4dO/view?usp=sharing">Backup Project.zip</A>
