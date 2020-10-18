@@ -11,16 +11,17 @@ import com.bit.university.vo.StudentVo;
 
 @Service
 public class LoginService implements UserDetailsService{
+	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		StudentVo student_vo = StudentManager.getStudent(username);
+	public UserDetails loadUserByUsername(String std_no) throws UsernameNotFoundException {
+		StudentVo student_vo = StudentManager.getStudent(std_no);
 		if (student_vo == null) {
-			throw new UsernameNotFoundException(username);
+			throw new UsernameNotFoundException(std_no);
 		}
 		return User.builder()
-		.username(username)
-		.password(student_vo.getStd_pwd())
-		.roles(student_vo.getRole())
-		.build();
+				.username(std_no)
+				.password(student_vo.getStd_pwd())
+				.roles("ADMIN")
+				.build();
 	}
 }

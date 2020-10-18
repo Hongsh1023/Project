@@ -24,12 +24,12 @@ public class StudentManager {
 		}
 	}
 
-	public static StudentVo getStudent(String username) {
+	public static StudentVo getStudent(String std_no) {
 		StudentVo student_vo = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		HashMap map = new HashMap();
-		map.put("username", username);
-		student_vo = session.selectOne("member.selectMember", map);
+		map.put("std_no", std_no);
+		student_vo = session.selectOne("student.getStudent", map);
 		session.close();
 		return student_vo;
 	}
