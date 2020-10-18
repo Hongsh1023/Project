@@ -16,7 +16,7 @@ public class BoardManager {
 	public static SqlSessionFactory sqlSessionFactory;
 
 	static {
-		String resource = "com/example/demo/db/sqlMapConfig.xml";
+		String resource = "com/bit/university/db/sqlMapConfig.xml";
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -79,13 +79,18 @@ public class BoardManager {
 	
 	public static int getBoardCount(int board_boardno, String board_category, String search, String keyword) {
 		int n = 0;
+		System.out.println(board_boardno+"/"+board_category+"/"+search+"/"+keyword);
+		System.out.println("getBoardCountTest______1111");
 		SqlSession session = sqlSessionFactory.openSession();
+		System.out.println("getBoardCountTest______2222");
 		HashMap map = new HashMap();
+		System.out.println("getBoardCountTest______3333");
 		map.put("board_boardno", board_boardno);
+		System.out.println("getBoardCountTest______4444");
 		map.put("board_category", board_category);
 		map.put("search", search);
 		map.put("keyword", keyword);
-		n = session.selectOne("board.deleteBoard", map);
+		n = session.selectOne("board.getBoardCount", map);
 		session.close();
 		return n;
 	}

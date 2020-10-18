@@ -30,18 +30,18 @@
 				board_content,board_regdate,board_hit,board_pwd,board_fname,std_no
 				 from (select * from board order by board_no desc, board_regdate desc)
 				where board_category like '%' ||#{board_category}|| '%' and board_boardno= #{board_boardno}
-				<if test="${search} != null and ${keyword} != null and !${keyword}.equals(''))">
-				 and ${keyword} like '%' || ${search} || '%'
+				<if test="'${search}' != null and '${keyword}' != null and !'${keyword}'.equals('')">
+				 and '${keyword}' like '%' || '${search}' || '%'
 				</if>
-				<![CDATA[)where n >=${start} and n <=${end}]]>
+				<![CDATA[)where n >='${start}' and n <='${end}']]>
 	</select>
 	
 	<!-- 선택한 게시판의 모든 게시물 수를 반환해주는 메소드 -->
 	<select id="getBoardCount" resultType="java.lang.Integer">
 		select count(*) from board where board_boardno=#{board_boardno} 
 		and board_category=#{board_category}
-		<if test="${search} != null and ${keyword} != null and !${keyword}.equals(''))">
-			and ${keyword} like '%' || ${search} || '%'
+		<if test="'${search}' != null and '${keyword}' != null and !'${keyword}'.equals('')">
+			and '${keyword}' like '%' || '${search}' || '%'
 		</if>
 		 order by board_no
 	</select>

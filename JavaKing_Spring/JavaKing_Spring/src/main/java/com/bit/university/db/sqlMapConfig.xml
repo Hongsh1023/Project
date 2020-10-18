@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="com/bit/university/db.properties"/>
+  <properties resource="com\bit\university\db\db.properties"/>
   <typeAliases>
   	<typeAlias type="com.bit.university.vo.StudentVo" alias="student_vo"/>
   	<typeAlias type="com.bit.university.vo.ReplyVo" alias="reply_vo"/>
