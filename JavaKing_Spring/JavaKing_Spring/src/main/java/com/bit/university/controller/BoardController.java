@@ -142,12 +142,18 @@ public class BoardController {
 		}
 
 		System.out.println(page_size+""+board_count+""+total_page+""+page_max);
-
-		request.setAttribute("board_boardno", board_boardno);
-		request.setAttribute("page_str", page_str);
-		request.setAttribute("board_boardname", board_boardname);
-		request.setAttribute("category_list", dao.getBoardCategory(board_boardno));
-		request.setAttribute("list", dao.listAll(board_boardno, board_category, page_num, search, keyword));
+		
+		mav.addObject("board_boardno", board_boardno);
+		mav.addObject("page_str", page_str);
+		mav.addObject("board_boardname", board_boardname);
+		mav.addObject("category_list", dao.getBoardCategory(board_boardno));
+		mav.addObject("list", dao.listAll(board_boardno, board_category, page_num, search, keyword));
+		
+		//request.setAttribute("board_boardno", board_boardno);
+		//request.setAttribute("page_str", page_str);
+		//request.setAttribute("board_boardname", board_boardname);
+		//request.setAttribute("category_list", dao.getBoardCategory(board_boardno));
+		//request.setAttribute("list", dao.listAll(board_boardno, board_category, page_num, search, keyword));
 		
 		return mav;
 			
