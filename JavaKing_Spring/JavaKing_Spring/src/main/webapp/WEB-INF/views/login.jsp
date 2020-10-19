@@ -65,7 +65,7 @@ body {
 	margin-left: 4px;
 }
 
-#id{
+#std_no{
 	height: 30px;
 	width : 150px;
 	border: none;
@@ -92,7 +92,7 @@ body {
 	margin-left: 4px;
 }
 
-#pwd {
+#std_pwd {
 	height: 30px;
 	width : 150px;
 	border: none;
@@ -230,15 +230,15 @@ a {
 					<img src = "image/welcome.png" id ="welcome_image">
 				</div>
 				<div id="box2">
-					<form action="/login.do" method="post">
+					<form action="/login/main" method="post">
 						<div class="login" id="login_box">
 							<div class = "login" id = "id_box">
 								<img src="image/idIcon.png" id = "id_icon">&nbsp; 
-								<input type="number" name="id" placeholder="아이디" required="required" id ="id" value = "${re_id }">
+								<input type="number" name="std_no" placeholder="아이디" required="required" id ="std_no" value = "${re_id }">
 							</div>
 							<div class = "login" id = "pwd_box">
 								<img src="image/pwdIcon.png" id = "pwd_icon">&nbsp; 
-								<input type="password" name="pwd" placeholder="비밀번호" required="required" id = "pwd">
+								<input type="password" name="std_pwd" placeholder="비밀번호" required="required" id = "std_pwd">
 							</div>
 						</div>	
 						<div class="login" id="login_button">
@@ -250,7 +250,7 @@ a {
 							<input type ="checkbox" name ="cb_id" value = "checked" <c:if test="${re_id != null }">checked="checked"</c:if>>&nbsp;
 							아이디 저장 
 						</div>
-						<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }"/>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					</form>
 					<br>
 					<br>

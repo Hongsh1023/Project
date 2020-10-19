@@ -403,7 +403,7 @@ footer {
 	</div>
 	<div id = "hello_box">
 		<span id = "name">
-			${name}
+			${std_name}
 		</span>
 		님 반갑습니다.&nbsp;&nbsp;
 		<img src="../image/lock.png" id= "lock_image">
@@ -592,7 +592,7 @@ footer {
 				<div id = "my_info_box">
 					<div id = "my_info_text">
 						<div id = "my_info_name">
-							${name }
+							${std_name }
 						</div>
 						<div id = "my_info_id">
 							${std_no }
@@ -604,15 +604,15 @@ footer {
 				</a>
 				<div id = "info_box_white">
 					<div id = "my_info_major" class = "my_info_white">
-						${major }
+						${std_major }
 					</div>
 					<hr>
 					<div id = "my_info_level_semester" class = "my_info_white">
-						${level}학년&nbsp;${semester }학기
+						${std_level}학년&nbsp;${std_semester }학기
 					</div>
 					<hr>
 					<div id = "my_info_email" class = "my_info_white">
-						${email }
+						${std_email }
 					</div>
 				</div>
 			</div>

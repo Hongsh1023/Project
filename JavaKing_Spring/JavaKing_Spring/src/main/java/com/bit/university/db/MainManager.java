@@ -2,20 +2,21 @@ package com.bit.university.db;
 
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import com.bit.university.vo.StudentVo;
+import com.bit.university.vo.BoardVo;
 
-public class LoginManager {
+public class MainManager {
 
 	public static SqlSessionFactory sqlSessionFactory;
 
 	static {
-		String resource = "com/example/demo/db/sqlMapConfig.xml";
+		String resource = "com/bit/university/db/sqlMapConfig.xml";
 		try {
 			InputStream inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -24,14 +25,15 @@ public class LoginManager {
 		}
 	}
 
-	public static int loginCheck(int std_no, String std_pwd) {
-		int re = -1;
+	public static List<BoardVo> getBoardList(String board_category, int board_boardno){
+		List<BoardVo> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		HashMap map = new HashMap();
-		map.put("std_no", std_no);
-		map.put("std_pwd", std_pwd);
-		re = session.selectOne("login.loginCheck", map);
+		map.put("board_category", board_category);
+		map.put("board_boardno", board_boardno);
+		list = session.selectList("main.getBoardList", map);
 		session.close();
-		return re;
+		return list;
 	}
+	
 }

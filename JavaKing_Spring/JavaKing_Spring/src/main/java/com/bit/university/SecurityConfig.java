@@ -11,29 +11,30 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		// TODO Auto-generated method stub
-		// super.configure(http);
-		http.authorizeRequests()
-		.mvcMatchers("/","/login/**").permitAll()
-		.mvcMatchers("/admin/**").hasRole("ADMIN")
-		.anyRequest().authenticated();
-		
-		
-		http.formLogin().loginPage("/login.do").permitAll();
-		//http.formLogin().permitAll();
-		
-		http.logout()
-		.logoutRequestMatcher(new AntPathRequestMatcher("/logout.do"))
-		.invalidateHttpSession(true);
-		
-		http.httpBasic();
-	}
-	
-	@Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**").anyRequest();
+    @Override
+    public void configure(WebSecurity web) throws Exception
+    {
+        // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
+        web.ignoring().antMatchers("/css/**", "/js/**", "/image/**", "/lib/**").anyRequest();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                // 페이지 권한 설정
+                .mvcMatchers("/admin/**").hasRole("ADMIN")
+                .mvcMatchers("/login/**").authenticated()
+                .mvcMatchers("/","/**").permitAll()
+            .and() // 로그인 설정
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/login/main")
+                .usernameParameter("std_no")
+                .passwordParameter("std_pwd")
+                .permitAll()
+            .and() // 로그아웃 설정
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .invalidateHttpSession(true);
     }
 }
-

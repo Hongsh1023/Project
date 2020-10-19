@@ -14,13 +14,13 @@ public class LoginService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String std_no) throws UsernameNotFoundException {
-		StudentVo student_vo = StudentManager.getStudent(std_no);
-		if (student_vo == null) {
+		StudentVo vo = StudentManager.getStudent(std_no);
+		if (vo == null) {
 			throw new UsernameNotFoundException(std_no);
 		}
 		return User.builder()
 				.username(std_no)
-				.password(student_vo.getStd_pwd())
+				.password(vo.getStd_pwd())
 				.roles("ADMIN")
 				.build();
 	}

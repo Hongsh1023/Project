@@ -3,9 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="com/bit/university/db.properties"/>
+  <properties resource="com/bit/university/db/db.properties"/>
   <typeAliases>
   	<typeAlias type="com.bit.university.vo.StudentVo" alias="student_vo"/>
+  	<typeAlias type="com.bit.university.vo.BoardVo" alias="board_vo"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -20,6 +21,6 @@
   </environments>
   <mappers>
     <mapper resource="com/bit/university/db/StudentMapper.xml"/>
-    <mapper resource="com/bit/university/db/LoginMapper.xml"/>
+    <mapper resource="com/bit/university/db/MainMapper.xml"/>
   </mappers>
 </configuration>
