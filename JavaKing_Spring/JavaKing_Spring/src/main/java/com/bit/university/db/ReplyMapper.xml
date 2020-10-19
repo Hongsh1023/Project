@@ -19,7 +19,7 @@
 		delete reply where reply_no=#{reply_no}
 	</delete>
 	
-	<select id="getNextReplyNo" resultType="java.lang.Integer">
+	<select id="getNextReplyNo" resultType="reply_vo">
 		select nvl(max(#{reply_no}),0)+1 from reply
 	</select>
 	

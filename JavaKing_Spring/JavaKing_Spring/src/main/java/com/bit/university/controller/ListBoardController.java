@@ -14,10 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bit.university.dao.BoardDao;
+import com.bit.university.dao.ReplyDao;
+import com.bit.university.vo.BoardVo;
 
 
 @Controller
-public class BoardController {
+@RequestMapping("listBoard.do")
+public class ListBoardController {
 
 	public static int board_boardno=100;
 	public String board_category = "공지사항";
@@ -26,24 +29,28 @@ public class BoardController {
 	public static int page_size = 5;	
 	public static int total_page = 1;
 	public static int page_max = 5;
-	
+
 	@Autowired
-	private BoardDao dao;
+	private BoardDao b_dao;
+	private ReplyDao r_dao;
 	
-	
-	public void setDao(BoardDao dao) {
-		this.dao = dao;
+	public void setBoardDao(BoardDao b_dao) {
+		this.b_dao = b_dao;
 	}
 	
+	public void setReplyDao(ReplyDao r_dao) {
+		this.r_dao = r_dao;
+	}
+
 	@RequestMapping("/listBoard.do")
-	public ModelAndView listBoard(HttpServletRequest request, @RequestParam(value = "pageNUM", defaultValue = "1") HttpSession session) throws Throwable {
-		
+	public ModelAndView listBoard(HttpServletRequest request, HttpSession session) throws Throwable {
+
 		request.setCharacterEncoding("utf-8");
-		
+
 		ModelAndView mav = new ModelAndView();
-		
+
 		session = request.getSession();
-		
+
 		int page_num = 1;
 		if(session.getAttribute("page_size")!=null) {
 			page_size= (int) session.getAttribute("page_size");
@@ -64,7 +71,7 @@ public class BoardController {
 		//검색을 위한 search와 keyword변수
 		String search=null;
 		String keyword=null;
-		dao = new BoardDao();
+		b_dao = new BoardDao();
 
 		if((request.getParameter("board_boardno"))!=null) {
 
@@ -87,15 +94,15 @@ public class BoardController {
 		//-------------------------------------------------------------------------------------------
 
 		//카테고리 값을 요청받았을 경우, 변수에 지정
-		  if (board_category == null && session.getAttribute("board_category") != null
-	                && request.getParameter("board_boardno") == null) {
-	            board_category = URLDecoder.decode(request.getParameter("board_category"), "UTF-8");
-	        }
-	        if (request.getParameter("board_category") != null) {
-	            board_category = URLDecoder.decode(request.getParameter("board_category"), "UTF-8");
-	            session.setAttribute("board_category", board_category);
-	        }
-		
+		if (board_category == null && session.getAttribute("board_category") != null
+				&& request.getParameter("board_boardno") == null) {
+			board_category = URLDecoder.decode(request.getParameter("board_category"), "UTF-8");
+		}
+		if (request.getParameter("board_category") != null) {
+			board_category = URLDecoder.decode(request.getParameter("board_category"), "UTF-8");
+			session.setAttribute("board_category", board_category);
+		}
+
 		//--------------------------------------------------------------------------------------
 
 		if(session.getAttribute("search")!=null) {
@@ -113,8 +120,8 @@ public class BoardController {
 		System.out.println("board_category는 "+ board_category);
 
 		//board_count변수에 해당 게시판의 모든 게시물 수를 반환한 값을 저장
-		board_count=dao.getBoardCount(board_boardno, board_category, search, keyword);
-		
+		board_count=b_dao.getBoardCount(board_boardno, board_category, search, keyword);
+		System.out.println("여기까지 옴-------------------------------1");
 		//------------------------------------------------------------------------------------
 		total_page = (int)Math.ceil((double)board_count/page_size);
 		if(total_page==0) {
@@ -125,7 +132,7 @@ public class BoardController {
 		if(end_page > total_page) {
 			end_page = total_page;
 		}		
-
+		System.out.println("여기까지 옴-------------------------------2");
 
 		//--------------------------------------------------------------------------------------
 		String page_str = "";
@@ -142,27 +149,17 @@ public class BoardController {
 		}
 
 		System.out.println(page_size+""+board_count+""+total_page+""+page_max);
-		
+
 		mav.addObject("board_boardno", board_boardno);
 		mav.addObject("page_str", page_str);
 		mav.addObject("board_boardname", board_boardname);
-		mav.addObject("category_list", dao.getBoardCategory(board_boardno));
-		mav.addObject("list", dao.listAll(board_boardno, board_category, page_num, search, keyword));
-		
-		//request.setAttribute("board_boardno", board_boardno);
-		//request.setAttribute("page_str", page_str);
-		//request.setAttribute("board_boardname", board_boardname);
-		//request.setAttribute("category_list", dao.getBoardCategory(board_boardno));
-		//request.setAttribute("list", dao.listAll(board_boardno, board_category, page_num, search, keyword));
-		
+		mav.addObject("category_list", b_dao.getBoardCategory(board_boardno));
+		mav.addObject("list", b_dao.listAll(board_boardno, board_category, page_num, search, keyword));
+
 		return mav;
-			
+
 	}
-	
-	@RequestMapping("/detailBoard.do")
-	public void detail(int no, Model model) {
-	}
-	
+
 }
 
 
