@@ -152,7 +152,7 @@ a {
 				<div id="box2">
 					<div class="findId" id="find_id_box">
 						<div id = "result_box1">
-							${findid }
+							아이디는 ${result_id } 입니다.
 						</div>
 						<div id = "result_box2" onclick="location.href='findId.do'">
 							재검색을 원하시면 눌러주세요

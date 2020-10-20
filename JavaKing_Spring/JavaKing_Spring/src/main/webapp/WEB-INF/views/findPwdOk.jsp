@@ -152,7 +152,7 @@ a {
 				<div id="box2">
 					<div class="findPwd" id="find_pwd_box">
 						<div id = "result_box1">
-							${findpwd }
+							비밀번호는 ${result_pwd } 입니다.
 						</div>
 						<div id = "result_box2" onclick="location.href='findPwd.do'">
 							재검색을 원하시면 눌러주세요

@@ -24,7 +24,7 @@ public class StudentManager {
 		}
 	}
 
-	public static StudentVo getStudent(String std_no) {
+	public static StudentVo getStudent(int std_no) {
 		StudentVo student_vo = null;
 		SqlSession session = sqlSessionFactory.openSession();
 		HashMap map = new HashMap();

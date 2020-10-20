@@ -58,7 +58,7 @@ body {
 	margin-left: 4px;
 }
 
-#name{
+#std_name{
 	height: 30px;
 	width : 150px;
 	border: none;
@@ -84,7 +84,7 @@ body {
 	margin-left: 4px;
 }
 
-#email {
+#std_email {
 	height: 30px;
 	width : 150px;
 	border: none;
@@ -175,11 +175,11 @@ a {
 						<div class="findId" id="find_id_box">
 							<div class="findId" id = "name_box">
 								<img src="image/nameIcon.png" id = "name_icon">&nbsp; 
-								<input type="text" name="name" placeholder="이름" required="required" id ="name">
+								<input type="text" name="std_name" placeholder="이름" required="required" id ="std_name">
 							</div>
 							<div class="findId" id = "email_box">
 								<img src="image/emailIcon.png" id = "email_icon">&nbsp; 
-								<input type="email" name="email" placeholder="이메일" required="required" id = "email">
+								<input type="email" name="std_email" placeholder="이메일" required="required" id = "std_email">
 							</div>
 						</div>	
 						<div class="findId" id="submit_button">

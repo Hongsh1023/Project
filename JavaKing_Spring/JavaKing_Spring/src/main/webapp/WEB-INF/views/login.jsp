@@ -230,7 +230,7 @@ a {
 					<img src = "image/welcome.png" id ="welcome_image">
 				</div>
 				<div id="box2">
-					<form action="/login/main" method="post">
+					<form action="/login.do" method="post">
 						<div class="login" id="login_box">
 							<div class = "login" id = "id_box">
 								<img src="image/idIcon.png" id = "id_icon">&nbsp; 
@@ -250,7 +250,6 @@ a {
 							<input type ="checkbox" name ="cb_id" value = "checked" <c:if test="${re_id != null }">checked="checked"</c:if>>&nbsp;
 							아이디 저장 
 						</div>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 					</form>
 					<br>
 					<br>

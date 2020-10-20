@@ -6,19 +6,16 @@
 	<select id="getBoardList" resultType="board_vo">
 		select n, board_no, board_boardno, board_category,board_title,board_content, board_regdate,board_hit,board_pwd,board_fname,std_no from (select rownum n, board_no,board_boardno,board_category,board_title, board_content,board_regdate,board_hit,board_pwd,board_fname,std_no from (select * from board order by board_no desc, board_regdate desc) where board_category like '%'||#{board_category}||'%' and board_boardno=#{board_boardno} )where n >= 1 and 5 >= n
 	</select>
+	<select id="loginCheck" resultType = "java.lang.Integer">
+		select count(*) from student where std_no=#{std_no} and std_pwd=#{std_pwd}
+	</select>
+	<update id = "updatePwd">
+		update student set std_pwd=#{new_pwd} where std_no=#{std_no} and std_pwd=#{old_pwd}
+	</update>
+	<select id="getStudentId" resultType="java.lang.Integer">
+		select std_no from student where std_name=#{std_name} and std_email=#{std_email}
+	</select>
+	<select id="getStudentPwd" resultType="java.lang.String">
+		select std_pwd from student where std_no=#{std_no} and std_email=#{std_email}
+	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,7 +8,7 @@ import com.bit.university.vo.StudentVo;
 @Repository
 public class StudentDao {
 	
-	public StudentVo getStudent(String std_no) {
+	public StudentVo getStudent(int std_no) {
 		return StudentManager.getStudent(std_no);
 	}
 	

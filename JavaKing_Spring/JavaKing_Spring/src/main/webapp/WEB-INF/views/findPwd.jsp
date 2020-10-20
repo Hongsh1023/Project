@@ -65,7 +65,7 @@ body {
 	margin-left: 4px;
 }
 
-#id{
+#std_no{
 	height: 30px;
 	width : 150px;
 	border: none;
@@ -91,7 +91,7 @@ body {
 	margin-left: 4px;
 }
 
-#email {
+#std_email {
 	height: 30px;
 	width : 150px;
 	border: none;
@@ -182,11 +182,11 @@ a {
 						<div class="findPwd" id="find_pwd_box">
 							<div class="findPwd" id = "id_box">
 								<img src="image/idIcon.png" id = "id_icon">&nbsp; 
-								<input type="number" name="id" placeholder="아이디" required="required" id ="id">
+								<input type="number" name="std_no" placeholder="아이디" required="required" id ="std_no">
 							</div>
 							<div class="findPwd" id = "email_box">
 								<img src="image/emailIcon.png" id = "email_icon">&nbsp; 
-								<input type="email" name="email" placeholder="이메일" required="required" id = "email">
+								<input type="email" name="std_email" placeholder="이메일" required="required" id = "std_email">
 							</div>
 						</div>	
 						<div class="findPwd" id="submit_button">

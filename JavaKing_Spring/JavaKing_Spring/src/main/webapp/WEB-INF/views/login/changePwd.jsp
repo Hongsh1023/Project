@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -227,7 +227,6 @@ section {
 #my_info_text{
 	display: inline-block;
 	text-align: left;
-	width : 155.92px;
 }
 
 #my_info_name{
@@ -246,6 +245,7 @@ section {
 	display : inline-block;
 	width : 30px;
 	height : 30px;
+	margin-left: 40px;
 	padding:10px;
 }
 
@@ -395,6 +395,218 @@ footer {
 	margin-left:50px;
 }
 
+#big_box {
+	display: inline-block;
+	border : 2px #E1E1E1 solid;
+	width : 390px;
+	height : 290px;
+	vertical-align: top;
+}
+
+#box_blue {
+	background-color: #083b90;
+	width : 390px;
+	height : 290px;
+	color: #FFFFFF;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#go_info_box_image{
+	display : inline-block;
+	width : 30px;
+	height : 30px;
+	margin-left: 77px;
+	padding:10px;
+}
+
+#box_white {
+	display : inline-block;
+	background-color: #FFFFFF;
+	padding : 20px;
+	width : 350px;
+	height : 125px;
+}
+
+#change_box{
+	display: inline-block; 
+	margin-left: 50px;
+	vertical-align: top; 
+	margin-top:25px;
+}
+
+#change_text{
+	display: inline-block;
+	text-align: left;
+	width : 200px;
+}
+
+#change_pwd{
+	font-size: 30px;
+	padding-top:11px;
+	margin-bottom: 5px;
+	width:190.55px;
+}
+
+#error {
+	font-weight: bold;
+	font-size: 13px;
+	color :#42bfee;	
+	margin-bottom :16px;
+}
+
+#change_pwd_box{ 
+	margin-top:2px;
+	border :2px solid #9fbaee;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+#pwd_box{
+	display: inline-block;
+	margin-left: 20px;
+	width : 200px;
+}
+
+#old_pwd_box {
+	display: inline-block; 
+	vertical-align: middle;
+	background-color: #ffffff;
+	width:200px;
+}
+
+#old_pwd{
+	height: 30px;
+	width : 150px;
+	border: none;
+}
+
+#new_pwd_box {
+	display: inline-block; 
+	vertical-align: middle;
+	background-color: #ffffff;
+	width:200px;
+}
+
+#new_pwd{
+	height: 30px;
+	width : 150px;
+	border: none;
+}
+
+#new_pwd_check_box {
+	display: inline-block; 
+	vertical-align: middle;
+	background-color: #ffffff;
+	width:200px;
+}
+
+#new_pwd_check{
+	height: 30px;
+	width : 150px;
+	border: none;
+}
+
+#submit {
+	margin-left: 11px;
+	display: inline-block;
+	vertical-align: top;
+	width: 100px;
+	height: 100.5px;
+	background-color: #083b90; 
+	border: none; 
+	color: #FFFFFF;
+}
+
+.my_info_white{
+	color:#000000;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.board_boxes{
+	width : 350px;
+	height : 250px;
+	background-color: #FFFFFF;
+	display: inline-block;
+	border : 2px #E1E1E1 solid;
+	vertical-align: top;
+	padding : 20px;
+}
+
+#board_box1 {
+	margin-left: 15px;
+}
+
+#board_box2 {
+	margin-left: 15px;
+}
+
+#board_box3 {
+	display: inline-block;
+}
+
+#board_box4 {
+	display: inline-block;
+	margin-left: 15px;
+}
+
+#banner_box1{
+	width : 804px;
+	height : 150px;
+	background-color: #FFFFFF;
+	display: inline-block;
+	border : 2px #E1E1E1 solid;
+	margin-top: 19px;
+}
+
+#board_box_leftside{
+	display:inline-block;
+	margin-top: 19px;
+	width: 809px;
+}
+
+#banner_box2{
+	width : 390px;
+	height : 463px;
+	background-color: #FFFFFF;
+	display: inline-block;
+	border:2px #E1E1E1 solid;
+	margin-top: 19px;
+	margin-left: 15px;
+	vertical-align: top;
+}
+
+.box_title {
+	font-weight: bold;
+	font-size: 20px;
+	color: #083b90;
+	display: inline-block;
+}
+
+p {
+  display: block;
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+#banner1_image{
+	width : 804px;
+	height : 150px;
+	cursor: pointer;
+}
+
+#banner2_image{
+	width : 390px;
+	height : 463px;
+	cursor: pointer;
+}
+
 </style>
 </head>
 <header>
@@ -438,8 +650,8 @@ footer {
 							</div>
 							<ul class= "inside_list">
 								<li><p class = "p2"><a href = "classreg.do">수강신청</a></p></li>
-								<li><p class = "p2"><a href = "classSearch.do">수강내역조회</a></p></li>
-								<li><p class = "p2"><a href = "classSearch.do">시간표조회</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">수강내역조회</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">시간표조회</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -546,73 +758,42 @@ footer {
 					</div>
 				</div>
 			</div>
-			
-			&nbsp;&nbsp;·&nbsp;&nbsp;
-		<div id = "nav5" class = "nav">
-                <a href = "adminStudentInfo.do" class = "nav"><font color="red">관리자</font></a><br>
-            </div>
-            <div id = "nav_window5" class ="nav_window">
-                <div id = "nav_title5" class = "nav_title">
-                    <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관리자
-                </div>
-                <div id ="nav_right5" class = "nav_right">
-                    <div id = "nav_right_list5" class = "nav_right_list">
-                        <div class = "nav_right_box">
-                            <div class = "nav_right_title">
-                                관리자메뉴
-                            </div>
-
-                            <ul class= "inside_list">
-                                <li><p class = "p2"><a href = "adminStudentInfo.do">기본정보 등록</a></p></li>
-                                <li><p class = "p2"><a href = "insertRegister.do">등록금 등록</a></p></li>
-                                <li><p class = "p2"><a href = "insertProfessor.do">교수 등록</a></p></li>
-                            </ul>
-                        </div>
-                        <div class = "nav_right_box">
-                            <div class = "nav_right_title">
-                                &nbsp;&nbsp;
-                            </div>
-                            <ul class= "inside_list">
-                                <li><p class = "p2"><a href = "adminClass.do">강의 등록</a></p></li>
-                                <li><p class = "p2"><a href = "adminGrade.do">성적 등록</a></p></li>
-                            </ul>
-						</div>
-						</div>
-					</div>
-				</div>
-			</div>
+		</div>
 	</nav>
 	<section>
 	<hr>
 	<div id = "section_main">
-		<div id = "info_box">
-			<div id = "info_box_blue">
-				<img src = "../image/profile.png" id="profile_image">
-				<div id = "my_info_box">
-					<div id = "my_info_text">
-						<div id = "my_info_name">
-							${std_name }
+		<div id = "big_box">
+			<div id = "box_blue">
+				<div id = "change_box">
+					<div id = "change_text">
+						<div id = "change_pwd">
+							비밀번호 변경
 						</div>
-						<div id = "my_info_id">
-							${std_no }
+						<div id ="error">
+							${change_pwd_error }　
 						</div>
 					</div>
 				</div>
-				<a href = "changePwd.do">
-					<img src = "../image/gear.png" id="go_change_pwd_image">
-				</a>
-				<div id = "info_box_white">
-					<div id = "my_info_major" class = "my_info_white">
-						${std_major }
-					</div>
-					<hr>
-					<div id = "my_info_level_semester" class = "my_info_white">
-						${std_level}학년&nbsp;${std_semester }학기
-					</div>
-					<hr>
-					<div id = "my_info_email" class = "my_info_white">
-						${std_email }
+				<a href = "main.do">
+					<img src = "../image/gear.png" id="go_info_box_image">
+				</a> 
+				<div id = "box_white">
+					<div id="change_pwd_box">
+						<form action="changePwd.do" method="post">
+							<div id = "pwd_box">
+								<div id ="old_pwd_box">
+									<input type = "password" class ="change_pwd" id = "old_pwd" name = "old_pwd" required="required" placeholder="기존 비밀번호">
+								</div>
+								<div id ="new_pwd_box">
+									<input type = "password" class ="change_pwd" id = "new_pwd" name = "new_pwd" required="required" placeholder="새 비밀번호">
+								</div>
+								<div id ="new_pwd_check_box">
+									<input type = "password" class ="change_pwd" id = "new_pwd_check" name = "new_pwd_check" required="required" placeholder="새 비밀번호 확인">
+								</div>
+							</div>
+							<input type = "submit" value = "비밀번호 변경" id = "submit">
+						</form>
 					</div>
 				</div>
 			</div>
