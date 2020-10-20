@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="class">
+  <select id="classSelectAll" resultType="class_vo">
+    select rn,
+    class_no, 
+    class_name, 
+    class_startdate, 
+    class_enddate, 
+    class_dayofweek, 
+    class_time, 
+    class_room, 
+    class_credit, 
+    class_type, 
+    a.pro_no,
+    p.pro_name 
+    from (select rownum rn,
+    class_no, 
+    class_name, 
+    class_startdate, 
+    class_enddate, 
+    class_dayofweek, 
+    class_time, 
+    class_room, 
+    class_credit, 
+    class_type, 
+    pro_no 
+    from (select * from class 
+    where ${option} like '%'||'${search}'||'%'
+    order by class_type desc)) a,
+    professor p 
+    where a.pro_no=p.pro_no
+    and rn between #{start} and #{end}
+    order by rn
+  </select>
+  
+  <select id="classTotalRecord" resultType="java.lang.Integer">
+  	select count(*) from class 
+    where ${option} like '%'||'${search}'||'%'
+  </select>
+  
+  <select id="classNextNo" resultType="java.lang.Integer">
+  	select nvl(max(class_no),0)+1 from class
+  </select>
+  
+  <select id="classFindByNo" resultType="class_vo">
+  	select * from class where class_no = #{class_no}
+  </select>
+  
+  <select id="classInsert">
+  	insert into class (
+  	class_no, 
+    class_name, 
+    class_startdate, 
+    class_enddate, 
+    class_dayofweek, 
+    class_time, 
+    class_room, 
+    class_credit, 
+    class_type, 
+    pro_no 
+  	) values(
+  	#{class_no}, 
+    #{class_name}, 
+    #{class_startdate}, 
+    #{class_enddate}, 
+    #{class_dayofweek}, 
+    #{class_time}, 
+    #{class_room}, 
+    #{class_credit}, 
+    #{class_type}, 
+    #{pro_no} 
+  	)
+  </select>
+  
+  <select id="classUpdate">
+  update class set
+    class_no=#{class_no}, 
+    class_name=#{class_name}, 
+    class_startdate=#{class_startdate}, 
+    class_enddate=#{class_enddate}, 
+    class_dayofweek=#{class_dayofweek}, 
+    class_time=#{class_time}, 
+    class_room=#{class_room}, 
+    class_credit=#{class_credit}, 
+    class_type=#{class_type}, 
+    pro_no=#{pro_no}
+    where
+    class_no=#{class_no} 
+  </select>
+  
+  <select id="classDelete">
+  delete class where class_no=#{class_no}
+  </select>
+</mapper>
