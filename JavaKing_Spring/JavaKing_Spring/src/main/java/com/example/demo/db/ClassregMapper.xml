@@ -3,7 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="class">
-<!-- 수강목록/등록/삭제/수정을 위한 노드 -->
   <select id="classSelectAll" resultType="class_vo">
     select rn,
     class_no, 
@@ -95,11 +94,4 @@
   <select id="classDelete">
   delete class where class_no=#{class_no}
   </select>
-
-<!-- 학생정보란의 수강상세를 위한 노드 -->
-
-
-
-
-
 </mapper>
