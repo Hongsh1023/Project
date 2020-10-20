@@ -3,10 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="com/bit/university/db.properties"/>
-  <typeAliases>
-  	<typeAlias type="com.example.demo.vo.StudentVo" alias="student_vo"/>
-  </typeAliases>
+	<properties resource="com/example/demo/db/db.properties"/>
+	<typeAliases>
+		<typeAlias type="com.example.demo.vo.GradeVo" alias="gradeVo"/>
+	</typeAliases>
   <environments default="development">
     <environment id="development">
       <transactionManager type="JDBC"/>
@@ -19,6 +19,6 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/bit/university/db/Mapper.xml"/>
+    <mapper resource="com/example/demo/db/GradeMapper.xml"/>
   </mappers>
 </configuration>
