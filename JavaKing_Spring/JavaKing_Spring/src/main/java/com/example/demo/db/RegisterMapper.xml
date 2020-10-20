@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="register">
+
+	<select id="registerList" resultType="registerVo">
+		select reg_no, reg_date, reg_semester, reg_level, reg_entfee, reg_fee, reg_regfee, r.std_no, reg_year 
+		from register r, student s 
+		where s.std_no=r.std_no and r.std_no=#{std_no} 
+		order by reg_no
+	</select>
+
+	<select id="nextNo" resultType="java.lang.Integer">
+  		select nvl(max(reg_no),0)+1 from register
+  	</select>
+
+	<insert id="registerInsert">
+		insert into register values(#{reg_no},null,#{reg_semester},#{reg_level},#{reg_entfee},#{reg_fee},#{reg_regfee},#{std_no},#{reg_year})
+	</insert>
+
+
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
