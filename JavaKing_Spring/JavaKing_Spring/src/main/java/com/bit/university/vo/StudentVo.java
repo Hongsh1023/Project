@@ -19,6 +19,5 @@ public class StudentVo {
 	private Date std_startdate;
 	private Date std_enddate;
 	private String std_etc;
-	private String role;
 	private int pro_no;
 }
