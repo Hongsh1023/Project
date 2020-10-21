@@ -2,96 +2,156 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="class">
-  <select id="classSelectAll" resultType="class_vo">
-    select rn,
-    class_no, 
-    class_name, 
-    class_startdate, 
-    class_enddate, 
-    class_dayofweek, 
-    class_time, 
-    class_room, 
-    class_credit, 
-    class_type, 
-    a.pro_no,
-    p.pro_name 
-    from (select rownum rn,
-    class_no, 
-    class_name, 
-    class_startdate, 
-    class_enddate, 
-    class_dayofweek, 
-    class_time, 
-    class_room, 
-    class_credit, 
-    class_type, 
-    pro_no 
-    from (select * from class 
-    where ${option} like '%'||'${search}'||'%'
-    order by class_type desc)) a,
-    professor p 
-    where a.pro_no=p.pro_no
-    and rn between #{start} and #{end}
-    order by rn
-  </select>
+<mapper namespace="classreg">
+
+<!-- ******** 학사정보  ********* -->
+	<!-- detailClass 에서 정보 불러오기.. year 등 detailClass에서 필요한부분이 있어 따로 sql작성 -->
+	<select id="detailClassregList" resultType="classreg_vo">
+	 select 
+	    to_char( classreg_date, 'YYYY') class_year, 
+	    classreg_semester, 
+	    class_type, 
+	    cr.class_no, 
+	    class_name, 
+	    c.pro_no,
+	    pro_name, 
+	    class_credit, 
+	    class_dayofweek, 
+		class_time
+	from 
+		classreg cr, 
+		class c, 
+		professor p 
+	where 
+		cr.class_no=c.class_no 
+		and c.pro_no=p.pro_no 
+		and std_no=#{std_no} 
+		and to_char(classreg_date,'YYYY') = #{class_year} 
+		and classreg_semester=#{classreg_semester}
+	  </select>
+	
+
+<!-- ******** 학사정보/수강신청 ********* -->
+	
+	<!-- 수강신청시/학사정보 조회시 하단에 표시되는 리스트 -->
+	<select id="classregList" resultType="classreg_vo">
+	 select 
+	 	rownum, 
+	 	a.classreg_no, 
+	 	a.class_no, 
+	 	class_name, 
+	 	std_level, 
+	 	std_semester, 
+	 	class_type, 
+	 	class_credit, 
+	 	c.pro_no, 
+	 	pro_name, 
+	 	class_dayofweek,
+	 	class_time, 
+	 	classreg_retake 
+	 from(
+		select * 
+		from 
+			classreg 
+		where 
+			to_char(classreg_date,'YYYYMMDD') = to_char(sysdate,'YYYYMMDD') 
+			and std_no = #{std_no} 
+		order by 
+			classreg_no desc) a, 
+		student s, 
+		professor p, 
+		class c 
+	where 
+		a.std_no = s.std_no 
+		and a.class_no=c.class_no 
+		and c.pro_no=p.pro_no
+	</select>
+
+
+<!-- ******** 수강신청  ********* -->
+	<!-- 수강신청시 생성되는 다음번호 --> 
+	<select id="classregNextNo" resultType="java.lang.Integer">
+	  	select nvl(max(classreg_no),0)+1 from classreg
+	</select>
+	
+	<!-- 수강신청에서 신청한 과목수 -->  
+	<select id="classregCountlRecord" resultType="java.lang.Integer">
+	  select 
+	  	count(*) 
+	 from 
+	 	classreg 
+	 where 
+	  	std_no =#{std_no} 
+	  	and to_char(classreg_date,'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')
+	  </select>
+	  
+	<!-- 수강신청에서 신청한 학점 -->  
+	<select id="classregCountCredit" resultType="java.lang.Integer">
+	  	select 
+	  		sum(class_credit) 
+	  	from 
+	  		classreg c, 
+	  		class c1 
+	  	where 
+	  		c.std_no=#{std_no} 
+	  		and c.class_no = c1.class_no 
+	  		and to_char(classreg_date, 'YYYYMMDD')
+	  		<![CDATA[>=]]>
+	  		to_char(sysdate,'YYYYMMDD')
+	  </select>
   
-  <select id="classTotalRecord" resultType="java.lang.Integer">
-  	select count(*) from class 
-    where ${option} like '%'||'${search}'||'%'
-  </select>
-  
-  <select id="classNextNo" resultType="java.lang.Integer">
-  	select nvl(max(class_no),0)+1 from class
-  </select>
-  
-  <select id="classFindByNo" resultType="class_vo">
-  	select * from class where class_no = #{class_no}
-  </select>
-  
-  <select id="classInsert">
-  	insert into class (
-  	class_no, 
-    class_name, 
-    class_startdate, 
-    class_enddate, 
-    class_dayofweek, 
-    class_time, 
-    class_room, 
-    class_credit, 
-    class_type, 
-    pro_no 
-  	) values(
-  	#{class_no}, 
-    #{class_name}, 
-    #{class_startdate}, 
-    #{class_enddate}, 
-    #{class_dayofweek}, 
-    #{class_time}, 
-    #{class_room}, 
-    #{class_credit}, 
-    #{class_type}, 
-    #{pro_no} 
-  	)
-  </select>
-  
-  <select id="classUpdate">
-  update class set
-    class_no=#{class_no}, 
-    class_name=#{class_name}, 
-    class_startdate=#{class_startdate}, 
-    class_enddate=#{class_enddate}, 
-    class_dayofweek=#{class_dayofweek}, 
-    class_time=#{class_time}, 
-    class_room=#{class_room}, 
-    class_credit=#{class_credit}, 
-    class_type=#{class_type}, 
-    pro_no=#{pro_no}
-    where
-    class_no=#{class_no} 
-  </select>
-  
-  <select id="classDelete">
-  delete class where class_no=#{class_no}
-  </select>
+	<!-- 번호로 신청한 수강내역 찾기 -->  
+	<select id="classregFindByNo" resultType="classreg_vo">
+	  	select * from classreg where classreg_no=#{classreg_no}
+	  </select>
+	  
+	<!-- 수강신청 insert문 --> 
+	<select id="classregInsert">
+	  insert into classreg (
+	  	classreg_no, 
+	  	classreg_date,
+	    classreg_level, 
+	    classreg_semester, 
+	    classreg_retake, 
+	    std_no, 
+	    class_no
+	  ) values(
+	  	#{classreg_no}, 
+	  	sysdate,
+	    #{classreg_level}, 
+	    #{classreg_semester}, 
+	    #{classreg_retake}, 
+	    #{std_no}, 
+	    #{class_no}
+	  	)
+	</select>
+	  
+	<!-- 수강신청시 중복과목체크문. 0이 아니면 신청할수 없게 할 예정. --> 
+	<select id="classregInsertCheckDoubleSub" resultType="java.lang.Integer">
+	 select 
+	 	count(*) 
+	 from 
+	 	classreg 
+	 where 
+	 	std_no =#{std_no} 
+	 	and class_no=#{class_no} 
+	 	and to_char(classreg_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')
+	</select>
+	
+	<!-- 수강신청시 재수강여부체크. 기본 -1 Y재수강, 0 N첫수강, 2이상 I수강불가  -->
+	<select id="classregInsertCheckRetake" resultType="java.lang.Integer">
+	select 
+		count(*) 
+	from 
+		classreg 
+	where 
+		std_no =#{std_no} 
+		and class_no=#{class_no}
+	</select>
+	
+	<!-- 수강신청한 내역 삭제 -->  
+	<select id="classergDelete">
+	  delete classreg where classreg_no=#{classreg_no}
+	</select>
+	
 </mapper>

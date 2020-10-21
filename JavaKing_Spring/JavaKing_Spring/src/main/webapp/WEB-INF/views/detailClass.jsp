@@ -11,7 +11,9 @@
 <title>:: 비트대학교 ::</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+</script>
 <style type="text/css">
 
 a {
@@ -498,11 +500,19 @@ table{
 		<div id="tables" class="year_semester_grade">
 			<div class="container1">
 					<label for="div년도" id="lbl년도" title="년도">년도</label>
-					<input type="text" id="div년도" class="form-control" name="year">
+					<select id="div년도" class="form-control" name="class_year">
+						<option disabled selected>==선택==</option>
+						<option value="2016">2016</option>
+						<option value="2017">2017</option>
+						<option value="2018">2018</option>
+						<option value="2019">2019</option>
+						<option value="2020">2020</option>
+					</select>
 	        </div>
 	        <div class="container2">
 					<label for="div학기" id="lbl학기" title="학기">학기</label>
-					<br><select id="div학기" title="학기" name="semester">
+					<br><select id="div학기" title="학기" name="classreg_semester">
+						<option disabled selected>==선택==</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 					</select>
@@ -522,7 +532,6 @@ table{
 					<th>학점</th>
 					<th width="15%">강의시간</th>
 				</tr>
-	<!-- 1006 세션명변경 -->
 				<c:forEach var="cv" items="${classreg_list }">
 					<tr>
 					<td><input type="text" id="div년도" class="form-control" name="year" value="${cv.class_year }" readonly="readonly"></td>
@@ -536,6 +545,7 @@ table{
 					</tr>
 				</c:forEach>
 			</table>
+			${classreg_str }
 			</div>
 		</div>
 	</div>
