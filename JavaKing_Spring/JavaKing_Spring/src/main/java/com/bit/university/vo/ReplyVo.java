@@ -2,9 +2,13 @@ package com.bit.university.vo;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReplyVo {
 	private int reply_no;
 	private String reply_content;

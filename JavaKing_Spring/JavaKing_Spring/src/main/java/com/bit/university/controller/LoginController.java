@@ -60,7 +60,6 @@ public class LoginController {
 			if (request.getParameter("cb_id") != null && !request.getParameter("cb_id").equals("")) {
 				cb_id = request.getParameter("cb_id");
 			}
-			System.out.println(cb_id);
 			session.setAttribute("cb_id", cb_id);
 			
 			// 아이디 저장 체크일 경우 login.jsp 에서 사용할 id 값을 반환해줌

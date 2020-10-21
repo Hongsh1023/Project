@@ -1,8 +1,12 @@
 package com.bit.university.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class GradeVo {
 	private int grade_no;
 	private int grade_regcredit;
