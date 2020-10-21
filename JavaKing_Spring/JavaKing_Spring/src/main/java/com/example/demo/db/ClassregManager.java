@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.example.demo.vo.ClassregVo;
+import com.example.demo.vo.StudentVo;
 
 public class ClassregManager {
 
@@ -34,7 +35,7 @@ public class ClassregManager {
 		return list;
 	}
 	
-	//***수강신청/학사정보*** 에 표시되는 리스트
+	//수강신청 에 표시되는 리스트
 	public static List<ClassregVo> classregList(int std_no){
 		List<ClassregVo> list = null;
 		SqlSession session = sqlSessionFactory.openSession();
@@ -51,6 +52,15 @@ public class ClassregManager {
 		n = session.selectOne("classreg.classregNextNo");
 		session.close();
 		return n;
+	}
+	
+	//수강신청 실행시 첫창에 학생정보 끌어오기
+	public static StudentVo classregStudentInfoByNo(int std_no) {
+		StudentVo s_vo = null;
+		SqlSession session = sqlSessionFactory.openSession();
+		s_vo = session.selectOne("classreg.classregStudentInfoByNo", std_no);
+		session.close();
+		return s_vo;
 	}
 	
 	//수강신청에서 신청한 과목수

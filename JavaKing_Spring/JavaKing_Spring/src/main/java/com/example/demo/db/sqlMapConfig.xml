@@ -7,6 +7,7 @@
 <typeAliases>
 	<typeAlias type="com.example.demo.vo.ClassVo" alias="class_vo"/>
 	<typeAlias type="com.example.demo.vo.ClassregVo" alias="classreg_vo"/>
+	<typeAlias type="com.example.demo.vo.StudentVo" alias="student_vo"/>
 </typeAliases>
   <environments default="development">
     <environment id="development">

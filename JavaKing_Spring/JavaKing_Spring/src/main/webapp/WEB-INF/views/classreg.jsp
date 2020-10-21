@@ -445,7 +445,7 @@ footer {
 		<table border="1" class="search">
 			<tr>
 				<th>과목명</th>
-				<td><form action="classregSearch.do?stdno=${s.std_no}" method="post">
+				<td><form action="classreg.do?stdno=${s.std_no}" method="post">
 						<input type="text" name="search" ><button type="submit">조회</button>
 						<font color="${color }">${msg }</font>
 					</form>
@@ -454,6 +454,7 @@ footer {
 					<th>신청과목수</th>
 					<td>${cSubject }</td>
 				</td>
+				
 			</tr>
 		</table>
 	</div>
@@ -471,23 +472,21 @@ footer {
 						<th>신청</th>
 					</tr>
 					<!-- foreach 처리 -->
-					<c:forEach var="sc" items="${searchList }">
+					<c:forEach var="sc" items="${cr_list }">
 						<tr>
-							<td>${sc.rownum }<input type="hidden" value="${sc.class_no }"></td>
+							<td>${sc.rn }<input type="hidden" value="${sc.class_no }"></td>
 							<td>${sc.class_name }</td>
 							<td>${sc.class_type }</td>
 							<td>${sc.class_credit }</td>
 							<td>${sc.pro_name }(${sc.pro_no })</td>
 							<td>${sc.class_dayofweek } ${sc.class_time }</td>
-							<td><a href="classregOk.do?classno=${sc.class_no }&stdno=${s.std_no}"><button>신청</button></a></td>
+							<td><a href="classregInsert.do?classno=${sc.class_no }&stdno=${s.std_no}"><button>신청</button></a></td>
 						</tr>
 					</c:forEach>
 				</table>
-				<c:if test="${searchList !=null }">
-					<c:forEach var="i" begin="1" end="${totalPage }">
-					<a href="classregSearch.do?pageNum=${i }&stdno=${s.std_no}">${i }</a> 
-					</c:forEach>
-				</c:if>	
+				<c:if test="${pageStr !=null  }">
+				${pageStr }
+				</c:if>
 			</div>
 			<div class="시간표" style="float:right">
 				<table border="1" class="timetable">
@@ -526,9 +525,9 @@ footer {
 				<th>삭제</th>
 			</tr>
 			<!-- foreach 처리 ClassregVo-->
-			<c:forEach var="cr" items="${crList }">
+			<c:forEach var="cr" items="${mycrList}">
 				<tr>
-					<td>${cr.rownum }<input type="hidden" value="${cr.classreg_no }"></td>
+					<td>${cr.rn }<input type="hidden" value="${cr.classreg_no }"></td>
 					<td>${cr.class_name }</td>
 					<td>${cr.std_level }</td>
 					<td>${cr.std_semester }</td>

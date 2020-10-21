@@ -33,8 +33,8 @@ public class DetailClassController {
 
 	@RequestMapping(value="/detailClass.do", method=RequestMethod.GET)
 	public void detailClassForm(Model model) {
-		int std_no =(Integer) session.getAttribute("std_no");
-		//int std_no = 2014104195; 	//test 용!
+//		int std_no =(Integer) session.getAttribute("std_no");
+		int std_no = 2014104195; 	//test 용!
 		model.addAttribute("std_no", std_no);
 	}
 	
@@ -42,8 +42,8 @@ public class DetailClassController {
 	public void detailClassSubmit(Model model, 
 			@RequestParam(value="class_year", defaultValue="2020") String class_year,
 			@RequestParam(value="classreg_semester", defaultValue="1") int classreg_semester){ 
-		
-		int std_no =(Integer) session.getAttribute("std_no");
+		int std_no = 2014104195; 	//test 용!
+		//int std_no =(Integer) session.getAttribute("std_no");
 		System.out.println("std_no, class_year, classreg_semester: "+std_no+","+"class_year"+","+classreg_semester);
 
 		HashMap map = new HashMap ();

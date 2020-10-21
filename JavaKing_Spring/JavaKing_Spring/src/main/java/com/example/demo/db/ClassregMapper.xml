@@ -29,11 +29,8 @@
 		and to_char(classreg_date,'YYYY') = #{class_year} 
 		and classreg_semester=#{classreg_semester}
 	  </select>
-	
 
-<!-- ******** 학사정보/수강신청 ********* -->
-	
-	<!-- 수강신청시/학사정보 조회시 하단에 표시되는 리스트 -->
+	<!-- 학사정보 조회시 하단에 표시되는 리스트 -->
 	<select id="classregList" resultType="classreg_vo">
 	 select 
 	 	rownum, 
@@ -66,7 +63,18 @@
 		and a.class_no=c.class_no 
 		and c.pro_no=p.pro_no
 	</select>
+	
 
+<!-- ******** 학사정보/수강신청 ********* -->
+	<!-- 수강신청 첫 창에 학생정보 끌어오기 -->
+	<select id="classregStudentInfoByNo" resultType="student_vo">
+	select *
+	from 
+		student
+	where
+		std_no = #{std_no}
+	
+	</select>
 
 <!-- ******** 수강신청  ********* -->
 	<!-- 수강신청시 생성되는 다음번호 --> 
