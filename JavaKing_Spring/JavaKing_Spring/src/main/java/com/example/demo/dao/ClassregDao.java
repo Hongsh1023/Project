@@ -64,7 +64,7 @@ public class ClassregDao {
 		case "재학" : checkStates = true;break;
 		case "복학" : checkStates = true;break;
 		}
-		if(checkStates) {
+		if(checkStates=true) {
 			int classreg_no = classregNextNo();
 			int classreg_level = svo.getStd_level();
 			int classreg_semester = svo.getStd_semester();
@@ -100,7 +100,7 @@ public class ClassregDao {
 		return re;
 	}
 	
-	public int classregDelete(int classreg_no) {
-		return ClassregManager.classregDelete(classreg_no);
+	public int classregDelete(HashMap map) {
+		return ClassregManager.classregDelete(map);
 	}
 }

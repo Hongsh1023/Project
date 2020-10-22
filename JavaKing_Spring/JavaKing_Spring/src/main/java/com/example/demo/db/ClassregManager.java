@@ -114,10 +114,10 @@ public class ClassregManager {
 		return n;
 	}
 	
-	public static int classregDelete(int classreg_no) {
+	public static int classregDelete(HashMap map) {
 		int n = -1;
 		SqlSession session = sqlSessionFactory.openSession(true);
-		n = session.delete("classreg.classergDelete", classreg_no);
+		n = session.delete("classreg.classergDelete", map);
 		session.close();
 		return n;
 	}

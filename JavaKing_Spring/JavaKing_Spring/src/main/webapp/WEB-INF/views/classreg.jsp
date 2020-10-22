@@ -8,7 +8,49 @@
 <head>
 <meta charset="UTF-8">
 <title>:: 비트대학교 ::</title>
+<script type="text/javascript" src=" https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+/*
+	$("#btn_search").click(function(){
+		var search = $("#search").val();
+		var site = $(this).attr("site");
+		var url = "classreg.do?site="+site+"&search="+search;
+		location.href = url;
+		});
+*/
+	$("#btn_search").click(function(){	
+		var data = $("#s").serialize();
+		$(location).attr('href', '/classreg.do'+data);
+	});
+	
+	$(document).on("click",".btn_insert",function(){	
+		$(".inputInsert").empty();
+	//	var data = {site:"2",classno:$(this).attr("classno")};
+		var inputSite = $("<input></input>").attr("type","hidden").addClass("inputInsert").val($(this).attr("site"));
+		var inputClassno = $("<input></input>").attr("type","hidden").val($(this).attr("classno"));
+		$(".inputInsert").append(inputSite,inputClassno);
+
+		var data = $("#input").serialize();
+		$(location).attr("href","/classreg.do"+data);
+	});
+	
+	$(document).on("click",".btn_insert",function(){	
+		$("#inputDelete").empty();
+	//	var data = {site:"2",classno:$(this).attr("classno")};
+		var inputSite = $("<input></input>").attr("type","hidden").val($(this).attr("site"));
+		var inputClassno = $("<input></input>").attr("type","hidden").val($(this).attr("classno"));
+		$("#input").append(inputSite,inputClassno);
+
+		var data = $("#input").serialize();
+		$(location).attr("href","/classreg.do"+data);
+	});
+	
+});
+</script>
+
 <style type="text/css">
+
 
 a {
 	text-decoration: none;
@@ -445,10 +487,12 @@ footer {
 		<table border="1" class="search">
 			<tr>
 				<th>과목명</th>
-				<td><form action="classreg.do?stdno=${s.std_no}" method="post">
-						<input type="text" name="search" ><button type="submit">조회</button>
-						<font color="${color }">${msg }</font>
-					</form>
+				<td>
+				<form id="s">
+					<input type="hidden" name="site" id="site" value="1">
+					<input type="text" name="search" id="search"><button id="btn_search">조회</button>
+				</form>
+					<font color="${color }">${msg }</font>
 					<th>총신청학점</th>
 					<td>${cCredit }</td>
 					<th>신청과목수</th>
@@ -480,7 +524,10 @@ footer {
 							<td>${sc.class_credit }</td>
 							<td>${sc.pro_name }(${sc.pro_no })</td>
 							<td>${sc.class_dayofweek } ${sc.class_time }</td>
-							<td><a href="classregInsert.do?classno=${sc.class_no }&stdno=${s.std_no}"><button>신청</button></a></td>
+							<td>
+							<div class="inputInsert"></div>
+								<button class="btn_insert" site="2" classno="${sc.class_no }">신청</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -536,7 +583,7 @@ footer {
 					<td>${cr.pro_name } (${cr.pro_no })</td>
 					<td>${cr.class_dayofweek } ${cr.class_time }</td>
 					<td>${cr.classreg_retake }</td>
-					<td><a href="classregDelete.do?classregno=${cr.classreg_no }&stdno=${s.std_no}"><button>삭제</button></a></td>
+					<td><button class="btn_delete" site="3" classregno=${cr.classreg_no } >삭제</button></a></td>
 				</tr>
 			</c:forEach>
 		</table>
