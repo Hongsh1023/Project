@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 import com.example.demo.dao.ClassDao;
 import com.example.demo.dao.ClassregDao;
@@ -40,41 +41,38 @@ public class ClassregController {
 		this.cdao=cdao;
 	}
 	
-	@RequestMapping(value="/classreg.do")
+	@RequestMapping(value="/classreg.do") //기본뷰
 	public void classregForm(
-
 			Model model,
-			@RequestParam(value="site", defaultValue="1") int site,
 			@RequestParam(value="pageNum", defaultValue = "1") int pageNum, 
 			@RequestParam(value="search", defaultValue = "") String search,
 			@RequestParam(value="option", defaultValue = "class_name") String option,
 			@RequestParam(value="std_no", defaultValue = "2014104195") int std_no,
-			@RequestParam(value="classno", defaultValue = "0") int class_no,
 			HttpServletRequest request
 			) {
 		//int std_no =(Integer) session.getAttribute("std_no");
-		//test 용!
-		//int std_no = 2014104195; 	
 		//학생정보 출력을 위한 학생정보 전달
 		model.addAttribute("s", crdao.classregStudentInfoByNo(std_no));
-		
-		openClassList(site, pageNum, search, option, std_no, class_no, model, request);
-	}
-	
 
-	public void openClassList(
-		int site, int pageNum, String search, String option, int std_no, int class_no, Model model,HttpServletRequest request) 
-	
-	{
 		//---------------검색어기억-------------------
 		session = request.getSession();
 		if(!search.equals("")) {
 			search = search.trim();
 			session.setAttribute("search", search);
+			//수강신청결과메시지 삭제
+			session.setAttribute("msg", "");
+			session.setAttribute("color", "");
 		}
 		if(session.getAttribute("search")!=null) {
 			search = (String)session.getAttribute("search");
 		}
+		
+		//-------------등록내역,수,학점기억-----------------
+		
+		model.addAttribute("cSubject", crdao.classregCountlRecord(std_no));
+		model.addAttribute("cCredit", crdao.classregCountCredit(std_no));
+		model.addAttribute("mycrList", crdao.classregList(std_no));
+		
 		
 		//---------------과목리스트-------------------
 		
@@ -123,47 +121,23 @@ public class ClassregController {
 		listMap.put("end", end);
 		
 		//리스트
-				List<ClassVo> list = null;
-				list = cdao.classList(listMap);
-				session.setAttribute("cr_list", list);
-				session.setAttribute("mycrList", crdao.classregList(std_no));
-		
-		//-------------
-
-		if(site == 2) {
-			HashMap insertMap = new HashMap();
-			insertMap.put("std_no", std_no);
-			insertMap.put("class_no", class_no);
-			String class_name = cdao.classFindByNo(class_no).getClass_name();
-			int re = -1;
-			re = crdao.classregInsert(insertMap);
-			if(re <= 0) {
-				request.setAttribute("msg", class_name+"신청에 실패했습니다.");
-				request.setAttribute("color", "red");
+		List<ClassVo> list = null;
+		list = cdao.classList(listMap);
+		session.setAttribute("cr_list", list);
 				
 				
-			}else {
-				request.setAttribute("msg",class_name+"신청되었습니다.");
-				request.setAttribute("color", "blue");
-				session.setAttribute("cCredit",crdao.classregCountCredit(std_no));
-				session.setAttribute("cSubject",crdao.classregCountlRecord(std_no));
-				session.setAttribute("mycrList", crdao.classregList(std_no));
-			}
-		
-		//-------------
-		
-		
-		
-		
-		
-		}
-			
 	}
-	
-	
-	public void classregInsert(int std_no, int class_no, Model model, HttpServletRequest request) { 
-		HttpSession session = request.getSession();
-		//재수강여부 체크는 다오에서 진행
+	@RequestMapping(value="/classregInsert.do") //insert뷰
+	public ModelAndView classregInsert(
+			Model model,
+			@RequestParam(value="std_no", defaultValue = "2014104195") int std_no,
+			@RequestParam(value="classno") int class_no,
+			HttpServletRequest request
+			) {
+		//int std_no =(Integer) session.getAttribute("std_no");
+		//학생정보 출력을 위한 학생정보 전달
+		model.addAttribute("s", crdao.classregStudentInfoByNo(std_no));
+		
 		HashMap insertMap = new HashMap();
 		insertMap.put("std_no", std_no);
 		insertMap.put("class_no", class_no);
@@ -171,19 +145,65 @@ public class ClassregController {
 		int re = -1;
 		re = crdao.classregInsert(insertMap);
 		if(re <= 0) {
-			request.setAttribute("msg", class_name+"신청에 실패했습니다.");
-			request.setAttribute("color", "red");
+			session.setAttribute("msg", class_name+"신청에 실패했습니다.");
+			session.setAttribute("color", "red");
 			
 			
 		}else {
-			request.setAttribute("msg",class_name+"신청되었습니다.");
-			request.setAttribute("color", "blue");
+			session.setAttribute("msg",class_name+"신청되었습니다.");
+			session.setAttribute("color", "blue");
 			session.setAttribute("cCredit",crdao.classregCountCredit(std_no));
 			session.setAttribute("cSubject",crdao.classregCountlRecord(std_no));
 			session.setAttribute("mycrList", crdao.classregList(std_no));
 		}
+		
+		//-------------
+		
+		ModelAndView mav = new ModelAndView("redirect:/classreg.do");
+		return mav;
+		
+	}
+	@RequestMapping(value="/classregDelete.do") //삭제뷰
+	public ModelAndView classregDelete(
+			Model model,
+			@RequestParam(value="std_no", defaultValue = "2014104195") int std_no,
+			@RequestParam(value="classregno") int classreg_no,
+			HttpServletRequest request
+			) {
+		//int std_no =(Integer) session.getAttribute("std_no");
+		//학생정보 출력을 위한 학생정보 전달
+		model.addAttribute("s", crdao.classregStudentInfoByNo(std_no));
+		
+		session.setAttribute("msg", "");
+		session.setAttribute("color", "");
+		
+		HashMap deleteMap = new HashMap();
+		deleteMap.put("std_no", std_no);
+		deleteMap.put("classreg_no", classreg_no);
+		crdao.classregDelete(deleteMap);
+		session.setAttribute("cCredit",crdao.classregCountCredit(std_no));
+		session.setAttribute("cSubject",crdao.classregCountlRecord(std_no));
+		session.setAttribute("mycrList", crdao.classregList(std_no));
+		//-------------
+		
+		ModelAndView mav = new ModelAndView("redirect:/classreg.do");
+		return mav;
+		
 	}
 
-	
-
+	@RequestMapping(value="/printClassreg.do") //삭제뷰
+	public void printClassreg(
+			@RequestParam(value="std_no", defaultValue = "2014104195") int std_no,
+			HttpServletRequest request) {
+		
+		session = request.getSession();
+				
+		//수강신청 하단의 신청내역
+		session.setAttribute("crList", crdao.classregList(std_no));
+		
+		//신청 점수, 갯수
+		session.setAttribute("cCredit",crdao.classregCountCredit(std_no));
+		session.setAttribute("cSubject",crdao.classregCountlRecord(std_no));
+	}
+			
 }

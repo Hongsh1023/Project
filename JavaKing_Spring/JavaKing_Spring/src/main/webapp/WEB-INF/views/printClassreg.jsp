@@ -408,7 +408,7 @@ table{
 			</tr>
 			<c:forEach var="cr" items="${crList }">
 				<tr>
-					<td>${cr.rownum }<input type="hidden" value="${cr.classreg_no }"></td>
+					<td>${cr.rn }<input type="hidden" value="${cr.classreg_no }"></td>
 					<td>${cr.class_name }</td>
 					<td>${cr.std_level }</td>
 					<td>${cr.std_semester }</td>

@@ -46,21 +46,24 @@ public class ClassregDao {
 	}
 	//수강신청 insert문
 	public int classregInsert(HashMap map) {
+		//true가 되면 insert 진행!
 		boolean checkStates = false;
 		int n=-1;
 		String classreg_retake = classregInsertCheckRetake(map);	//Y,N
-		if(classreg_retake.equals("Y") || classreg_retake.equals("N")) {
-			if( classregInsertCheckDoubleSub(map) == 0) { // 0
-				checkStates = true;
-			}	
+		if(classreg_retake.equals("I")) {
+			return n;
 		}
+		if( classregInsertCheckDoubleSub(map) != 0) { // 0
+			return n;
+		}
+		
 		int std_no = (Integer) map.get("std_no");
 		int class_no = (Integer) map.get("class_no");
 		StudentVo svo = classregStudentInfoByNo(std_no);
 		String sStates = svo.getStd_status();
 		switch(sStates) {
-		case "휴학": checkStates = false;break;
-		case "졸업" : checkStates = false;break;
+		case "휴학": return n;
+		case "졸업" : return n;
 		case "재학" : checkStates = true;break;
 		case "복학" : checkStates = true;break;
 		}
@@ -79,8 +82,10 @@ public class ClassregDao {
 						
 			n= ClassregManager.classregInsert(cr_vo);
 		}
+		System.out.println("재수강여부,중복신청여부,학적상태: "+classreg_retake+","+classregInsertCheckDoubleSub(map)+","+sStates);
 		return n;
 	}
+	
 	//수강신청시 중복과목체크문. 0이 아니면 신청할수 없게 할 예정.	/stdno, classno 필요
 	public int classregInsertCheckDoubleSub(HashMap map) {
 		int n = -1;
@@ -89,13 +94,15 @@ public class ClassregDao {
 	}
 	//수강신청시 재수강여부체크. /stdno, classno 필요
 	public String classregInsertCheckRetake(HashMap map) {
-		String re = "Y"; //재수강. 수강가능.
+		String re = ""; //재수강. 수강가능.
 		int n = -1;
 		n = ClassregManager.classregInsertCheckRetake(map);
 		if(n == 0) {
 			re = "N"; 	//첫수강. 수강가능
 		}else if (n > 1) {
 			re = "I";	//재수강 이상. 수강불가
+		}else {
+			re = "Y";
 		}
 		return re;
 	}

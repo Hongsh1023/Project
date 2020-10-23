@@ -109,7 +109,7 @@ public class ClassregManager {
 		//stdno, classno 필요
 		int n = -1;
 		SqlSession session = sqlSessionFactory.openSession();
-		n = session.insert("classreg.classregInsertCheckRetake", map);
+		n = session.selectOne("classreg.classregInsertCheckRetake", map);
 		session.close();
 		return n;
 	}

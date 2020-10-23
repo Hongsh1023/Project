@@ -30,7 +30,7 @@
 		and classreg_semester=#{classreg_semester}
 	  </select>
 
-	<!-- 학사정보 조회시 하단에 표시되는 리스트 -->
+	<!-- 학사정보/수강신청 조회시 하단에 표시되는 리스트 -->
 	<select id="classregList" resultType="classreg_vo">
 	 select 
 	 	rownum rn, 
@@ -98,7 +98,7 @@
 	<!-- 수강신청에서 신청한 학점 -->  
 	<select id="classregCountCredit" resultType="java.lang.Integer">
 	  	select 
-	  		sum(class_credit) 
+	  		nvl(sum(class_credit),0) 
 	  	from 
 	  		classreg c, 
 	  		class c1 
@@ -139,7 +139,7 @@
 	<!-- 수강신청시 중복과목체크문. 0이 아니면 신청할수 없게 할 예정. --> 
 	<select id="classregInsertCheckDoubleSub" resultType="java.lang.Integer">
 	 select 
-	 	count(*) 
+	 	nvl(count(*),0) 
 	 from 
 	 	classreg 
 	 where 
@@ -151,7 +151,7 @@
 	<!-- 수강신청시 재수강여부체크. 기본 -1 Y재수강, 0 N첫수강, 2이상 I수강불가  -->
 	<select id="classregInsertCheckRetake" resultType="java.lang.Integer">
 	select 
-		count(*) 
+		nvl(count(*),0) 
 	from 
 		classreg 
 	where 
