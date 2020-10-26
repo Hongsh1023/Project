@@ -324,6 +324,40 @@
 				</div>
 			</div>
 		</div>
+		&nbsp;&nbsp;·&nbsp;&nbsp;
+			<div id = "nav5" class = "nav">
+                <a href = "adminStudentInfo.do" class = "nav"><font color="red">관리자</font></a><br>
+            </div>
+            <div id = "nav_window5" class ="nav_window">
+                <div id = "nav_title5" class = "nav_title">
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관리자
+                </div>
+                <div id ="nav_right5" class = "nav_right">
+                    <div id = "nav_right_list5" class = "nav_right_list">
+                        <div class = "nav_right_box">
+                            <div class = "nav_right_title">
+                                관리자메뉴
+                            </div>
+                            <ul class= "inside_list">
+                                <li><p class = "p2"><a href = "adminStudentInfo.do">기본정보 등록</a></p></li>
+                                <li><p class = "p2"><a href = "insertRegister.do">등록금 등록</a></p></li>
+                                <li><p class = "p2"><a href = "insertProfessor.do">교수 등록</a></p></li>
+                            </ul>
+                        </div>
+                        <div class = "nav_right_box">
+                            <div class = "nav_right_title">
+                                &nbsp;&nbsp;
+                            </div>
+                            <ul class= "inside_list">
+                                <li><p class = "p2"><a href = "adminClass.do">강의 등록</a></p></li>
+                                <li><p class = "p2"><a href = "adminGrade.do">성적 등록</a></p></li>
+                            </ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</nav>
 	<section>
 	<hr>
