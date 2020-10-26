@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="device-width, initial-scale=1">
 <title>:: 비트대학교 ::</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" media="screen">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style type="text/css">
 
@@ -372,6 +372,15 @@ footer {
 }
 	
 </style>
+<script type="text/javascript">
+		var pagePrint = function() {
+			document.body.innerHTML = tables.innerHTML;
+			window.print();
+			location.reload();
+
+			
+		};
+</script>
 </head>
 <body>
 </head>
@@ -558,7 +567,7 @@ footer {
 				</tr>
 				<c:forEach var="g" items="${grade_list}">
 				<tr>
-					<td width="20%"><a href="detailGrade.do?year=${g.grade_year }&semester=${g.grade_semester}"><input type="button" id="div구분" class="form-control" name="yearsemester" value="${g.grade_year }-${g.grade_semester}"></a></td>
+					<td width="20%"><a href="detailGrade.do?year=${g.grade_year }&semester=${g.grade_semester}"><input type="text" id="div구분" class="form-control" name="yearsemester" value="${g.grade_year }-${g.grade_semester}"></a></td>
 					<td><input type="text" id="div학년" class="form-control" name="grade_level" value="${g.grade_level }"></td>
 					<td><input type="text" id="div취득학점" class="form-control" name="grade_getcredit" value="${g.sum_grade_regcredit }"></td>
 					<td><input type="text" id="div평점평균" class="form-control" name="average" value="${g.average_grade_getcredit }"></td>
@@ -567,7 +576,7 @@ footer {
 				</c:forEach>
 			</table>
 			</div>
-		<input type="submit" value="성적표 출력" id="submit">
+		<input type="button" value="성적표 출력" id="submit" onClick="pagePrint()">
 		</div>
 		<div id="tables2">
 	        <div class="container3">  		
