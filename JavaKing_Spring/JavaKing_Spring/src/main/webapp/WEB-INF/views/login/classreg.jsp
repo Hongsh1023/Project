@@ -11,39 +11,24 @@
 <script type="text/javascript" src=" https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
-/*
-	$("#btn_search").click(function(){
-		var search = $("#search").val();
-		var site = $(this).attr("site");
-		var url = "classreg.do?site="+site+"&search="+search;
-		location.href = url;
-		});
-*/
+
 	$("#btn_search").click(function(){	
 		var data = $("#s").serialize();
-		$(location).attr('href', '/classreg.do'+data);
+		$(location).attr("href","/login/classreg.do"+data);
 	});
 	
 	$(document).on("click",".btn_insert",function(){	
-		$(".inputInsert").empty();
-		var inputSite = $("<input></input>").attr("type","hidden").addClass("inputInsert").val($(this).attr("site"));
-		var inputClassno = $("<input></input>").attr("type","hidden").val($(this).attr("classno"));
-		$(".inputInsert").append(inputSite,inputClassno);
-
-		var data = $("#input").serialize();
-		$(location).attr("href","/classreg.do"+data);
+		var classno = $(this).attr("classno");
+		var data = "?classno="+classno;
+		$(location).attr("href","/login/classregInsert.do"+data);
 	});
 	
-	$(document).on("click",".btn_insert",function(){	
-		$("#inputDelete").empty();
-		var inputSite = $("<input></input>").attr("type","hidden").val($(this).attr("site"));
-		var inputClassno = $("<input></input>").attr("type","hidden").val($(this).attr("classno"));
-		$("#input").append(inputSite,inputClassno);
-
-		var data = $("#input").serialize();
-		$(location).attr("href","/classreg.do"+data);
+	$(document).on("click",".btn_delete",function(){	
+		var classregno = $(this).attr("classregno");
+		var data = "?classregno="+classregno;
+		$(location).attr("href","/login/classregDelete.do"+data);
 	});
-	
+
 });
 </script>
 
@@ -492,9 +477,9 @@ footer {
 				</form>
 					<font color="${color }">${msg }</font>
 					<th>총신청학점</th>
-					<td>${cCredit }</td>
+					<td>&nbsp;&nbsp;${cCredit }&nbsp;&nbsp;</td>
 					<th>신청과목수</th>
-					<td>${cSubject }</td>
+					<td>&nbsp;&nbsp;${cSubject }&nbsp;&nbsp;</td>
 				</td>
 				
 			</tr>
