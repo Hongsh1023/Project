@@ -9,28 +9,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="device-width, initial-scale=1">
 <title>:: 비트대학교 ::</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-</script>
 <style type="text/css">
 
+header {
+	height: 130px !important;
+}
+
+hr {
+	display: block;
+	margin-top: 0.5em !important;
+	margin-bottom: 0.5em !important;
+	border-color: #8C8C8C !important;
+}
+
 a {
-	text-decoration: none;
+	text-decoration: none !important;
 	color : black;
 }
 
 body {
 	font-family: sans-serif;
-	margin: 0;
+	margin: 0 !important;
 	width: 2000px;
 	height: 100%;
-	padding : 0;
+	padding : 0 !important;
 	background-color: #FFFFFF;
 	display: inline-block;
 	position: relative;
 }
+
 
 #logo {
 	display : inline-block;
@@ -47,6 +57,7 @@ body {
 	margin-left : 70%;
 	vertical-align: middle;
 	padding-bottom: 10px;
+	font-size: 16px !important;
 }
 
 #name {
@@ -65,25 +76,30 @@ body {
 
 
 .nav {
-	display: inline-block;
+	display: inline-block !important;
 	background-color: #FFFFFF;
-	width : 100px;
-	height: 30px;
-	vertical-align: middle;
-	text-align: center;
-	font-size: 20px;
-	font-weight: bold;
+	width : 100px !important;
+	height: 30px !important;
+	vertical-align: middle !important;
+	text-align: center !important;
+	font-size: 20px !important;
+	font-weight: bold !important;
 	cursor: pointer;
+	margin-left:2px !important;
 }
+
 
 #nav_box {
 	display: inline;
 	width : 100%;
+	vertical-align: middle !important;
+	padding-top : 2px !important;
 }
 
 #nav1 {
-	margin-left : 400px;
+	margin-left : 400px !important;
 }
+
 
 .nav_window {
 	display : none;
@@ -91,7 +107,9 @@ body {
 	width : 100%;
 	height : 160px;
 	background-color: #083b90;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
+
 
 .nav:hover {
 	background-color: #083b90;
@@ -286,6 +304,7 @@ table{
 		margin-right: 80px;
 		width : 800px;
 		border : 1px solid gray;
+		padding :20px;
 	}
 	.container1{
 		padding-bottom:20px;

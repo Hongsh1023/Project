@@ -8,12 +8,12 @@
 		<version>2.3.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>javaking_1024</artifactId>
+	<groupId>com.bit</groupId>
+	<artifactId>JavaKing_Spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>javaking_1024</name>
-	<description>Demo project for Spring Boot</description>
+	<name>JavaKing_Spring</name>
+	<description>JavaKing_Spring_Project</description>
 
 	<properties>
 		<java.version>11</java.version>
