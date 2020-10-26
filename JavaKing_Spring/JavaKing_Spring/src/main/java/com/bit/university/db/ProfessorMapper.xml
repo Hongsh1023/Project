@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="professor">
+
+	<select id="professorList" resultType="professor_vo">
+		select * from professor order by pro_type, pro_major
+	</select>
+
+	<insert id="professorInsert">
+		insert into professor values(#{pro_no},#{pro_name},#{pro_email},#{pro_major},#{pro_type})
+	</insert>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

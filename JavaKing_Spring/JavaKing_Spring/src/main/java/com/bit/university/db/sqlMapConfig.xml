@@ -3,9 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="com/bit/university/db.properties"/>
+  <properties resource="com/bit/university/db/db.properties"/>
   <typeAliases>
-  	<typeAlias type="com.example.demo.vo.StudentVo" alias="student_vo"/>
+  	<typeAlias type="com.bit.university.vo.StudentVo" alias="student_vo"/>
+  	<typeAlias type="com.bit.university.vo.ReplyVo" alias="reply_vo"/>
+  	<typeAlias type="com.bit.university.vo.BoardVo" alias="board_vo"/>
+  	<typeAlias type="com.bit.university.vo.RegisterVo" alias="register_vo"/>
+  	<typeAlias type="com.bit.university.vo.ProfessorVo" alias="professor_vo"/>
+  	<typeAlias type="com.bit.university.vo.GradeVo" alias="grade_vo"/>
+  	<typeAlias type="com.bit.university.vo.ClassVo" alias="class_vo" />
+	<typeAlias type="com.bit.university.vo.ClassregVo" alias="classreg_vo" />
+	<typeAlias type="com.bit.university.vo.ChangeVo" alias="change_vo" />
+	<typeAlias type="com.bit.university.vo.ScheduleVo" alias="schedule_vo"/>
   </typeAliases>
   <environments default="development">
     <environment id="development">
@@ -19,6 +28,13 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/bit/university/db/Mapper.xml"/>
+    <mapper resource="com/bit/university/db/StudentMapper.xml"/>
+    <mapper resource="com/bit/university/db/MainMapper.xml"/>
+    <mapper resource="com/bit/university/db/ProfessorMapper.xml"/>
+    <mapper resource="com/bit/university/db/RegisterMapper.xml"/>
+    <mapper resource="com/bit/university/db/GradeMapper.xml"/>
+    <mapper resource="com/bit/university/db/ClassMapper.xml"/>
+	<mapper resource="com/bit/university/db/ClassregMapper.xml"/>
+	<mapper resource="com/bit/university/db/ChangeMapper.xml"/>
   </mappers>
 </configuration>

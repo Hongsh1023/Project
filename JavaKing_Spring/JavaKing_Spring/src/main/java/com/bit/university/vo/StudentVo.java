@@ -3,9 +3,14 @@ package com.bit.university.vo;
 import java.sql.Date;
 
 import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class StudentVo {
+
 	private int std_no;
 	private String std_pwd;
 	private String std_email;
@@ -19,6 +24,5 @@ public class StudentVo {
 	private Date std_startdate;
 	private Date std_enddate;
 	private String std_etc;
-	private String role;
 	private int pro_no;
 }

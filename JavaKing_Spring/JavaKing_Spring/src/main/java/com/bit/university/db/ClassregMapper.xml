@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="classreg">
+
+<!-- ******** 학사정보  ********* -->
+	<!-- detailClass 에서 정보 불러오기.. year 등 detailClass에서 필요한부분이 있어 따로 sql작성 -->
+	<select id="detailClassregList" resultType="classreg_vo">
+	 select 
+	    to_char( classreg_date, 'YYYY') class_year, 
+	    classreg_semester, 
+	    class_type, 
+	    cr.class_no, 
+	    class_name, 
+	    c.pro_no,
+	    pro_name, 
+	    class_credit, 
+	    class_dayofweek, 
+		class_time
+	from 
+		classreg cr, 
+		class c, 
+		professor p 
+	where 
+		cr.class_no=c.class_no 
+		and c.pro_no=p.pro_no 
+		and std_no=#{std_no} 
+		and to_char(classreg_date,'YYYY') = #{class_year} 
+		and classreg_semester=#{classreg_semester}
+	  </select>
+
+	<!-- 학사정보/수강신청 조회시 하단에 표시되는 리스트 -->
+	<select id="classregList" resultType="classreg_vo">
+	 select 
+	 	rownum rn, 
+	 	a.classreg_no, 
+	 	a.class_no, 
+	 	class_name, 
+	 	std_level, 
+	 	std_semester, 
+	 	class_type, 
+	 	class_credit, 
+	 	c.pro_no, 
+	 	pro_name, 
+	 	class_dayofweek,
+	 	class_time, 
+	 	classreg_retake 
+	 from(
+		select * 
+		from 
+			classreg 
+		where 
+			to_char(classreg_date,'YYYYMMDD') = to_char(sysdate,'YYYYMMDD') 
+			and std_no = #{std_no} 
+		order by 
+			classreg_no desc) a, 
+		student s, 
+		professor p, 
+		class c 
+	where 
+		a.std_no = s.std_no 
+		and a.class_no=c.class_no 
+		and c.pro_no=p.pro_no
+	order by
+		rn desc
+	</select>
+	
+
+<!-- ******** 학사정보/수강신청 ********* -->
+	<!-- 수강신청 첫 창에 학생정보 끌어오기 -->
+	<select id="classregStudentInfoByNo" resultType="student_vo">
+	select *
+	from 
+		student
+	where
+		std_no = #{std_no}
+	
+	</select>
+
+<!-- ******** 수강신청  ********* -->
+	<!-- 수강신청시 생성되는 다음번호 --> 
+	<select id="classregNextNo" resultType="java.lang.Integer">
+	  	select nvl(max(classreg_no),0)+1 from classreg
+	</select>
+	
+	<!-- 수강신청에서 신청한 과목수 -->  
+	<select id="classregCountlRecord" resultType="java.lang.Integer">
+	  select 
+	  	count(*) 
+	 from 
+	 	classreg 
+	 where 
+	  	std_no =#{std_no} 
+	  	and to_char(classreg_date,'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')
+	  </select>
+	  
+	<!-- 수강신청에서 신청한 학점 -->  
+	<select id="classregCountCredit" resultType="java.lang.Integer">
+	  	select 
+	  		nvl(sum(class_credit),0) 
+	  	from 
+	  		classreg c, 
+	  		class c1 
+	  	where 
+	  		c.std_no=#{std_no} 
+	  		and c.class_no = c1.class_no 
+	  		and to_char(classreg_date, 'YYYYMMDD')
+	  		<![CDATA[>=]]>
+	  		to_char(sysdate,'YYYYMMDD')
+	  </select>
+  
+	<!-- 번호로 신청한 수강내역 찾기 -->  
+	<select id="classregFindByNo" resultType="classreg_vo">
+	  	select * from classreg where classreg_no=#{classreg_no}
+	  </select>
+	  
+	<!-- 수강신청 insert문 --> 
+	<select id="classregInsert">
+	  insert into classreg (
+	  	classreg_no, 
+	  	classreg_date,
+	    classreg_level, 
+	    classreg_semester, 
+	    classreg_retake, 
+	    std_no, 
+	    class_no
+	  ) values(
+	  	#{classreg_no}, 
+	  	sysdate,
+	    #{classreg_level}, 
+	    #{classreg_semester}, 
+	    #{classreg_retake}, 
+	    #{std_no}, 
+	    #{class_no}
+	  	)
+	</select>
+	  
+	<!-- 수강신청시 중복과목체크문. 0이 아니면 신청할수 없게 할 예정. --> 
+	<select id="classregInsertCheckDoubleSub" resultType="java.lang.Integer">
+	 select 
+	 	nvl(count(*),0) 
+	 from 
+	 	classreg 
+	 where 
+	 	std_no =#{std_no} 
+	 	and class_no=#{class_no} 
+	 	and to_char(classreg_date, 'YYYYMMDD') = to_char(sysdate,'YYYYMMDD')
+	</select>
+	
+	<!-- 수강신청시 재수강여부체크. 기본 -1 Y재수강, 0 N첫수강, 2이상 I수강불가  -->
+	<select id="classregInsertCheckRetake" resultType="java.lang.Integer">
+	select 
+		nvl(count(*),0) 
+	from 
+		classreg 
+	where 
+		std_no =#{std_no} 
+		and class_no=#{class_no}
+	</select>
+	
+	<!-- 수강신청한 내역 삭제 -->  
+	<select id="classergDelete">
+	  delete classreg where classreg_no=#{classreg_no} and std_no=#{std_no}
+	</select>
+	
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student">
+  <select id="getStudent" resultType="student_vo">
+    select * from student where std_no=#{std_no}
+  </select>
+  
+   <select id="getStartEndDate" resultType="student_vo">
+    select * from student where std_no=#{std_no}
+  </select>
+  
+  <insert id="insertStudent">
+  	insert into student(std_no, std_pwd, std_email, std_name, std_gender, std_birthday, std_level, std_semester, std_major,
+  	std_status, std_startdate, std_etc, pro_no) 
+  	values(#{std_no}, 
+  	#{std_pwd},
+  	#{std_email},
+  	#{std_name},
+  	#{std_gender},
+  	#{std_birthday},
+  	#{std_level},
+  	#{std_semester},
+  	#{std_major},
+  	#{std_status},
+	#{std_startdate},
+  	#{std_etc},
+  	#{pro_no})
+  </insert>
+</mapper>

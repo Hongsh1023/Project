@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="grade">
+	
+	<select id="levelMax" resultType="java.lang.Integer">
+		select Max(grade_level) from grade where std_no=#{std_no}
+	</select>
+	<select id="semesterMax" resultType="java.lang.Integer">
+		select Max(grade_semester) from grade
+		where grade_level=#{max_grade_level} and std_no=#{std_no}
+	</select>
+	<select id="selectAll" resultType="grade_vo">
+		select grade_semester, grade_level, grade_year,
+		 sum(grade_regcredit) as sum_grade_regcredit,
+		avg(grade_getcredit) as average_grade_getcredit,
+		 avg(grade_score) as average_grade_score
+		from (select grade_no, grade_regcredit, grade_getcredit,
+		grade_score,grade_semester, grade_level, std_no, g.class_no,
+		to_char(class_startdate,'yyyy') as grade_year
+		 from class c, grade g
+		  where g.class_no=c.class_no and std_no=#{std_no}
+		and grade_level=#{max_grade_level} and grade_semester=#{max_grade_semester})
+		group by grade_year,grade_semester,grade_level
+	</select>
+	<select id="detail" resultType="grade_vo">
+		select grade_no, grade_regcredit, grade_getcredit,
+		grade_score,grade_semester, grade_level,
+		std_no, g.class_no,to_char(class_startdate,'yyyy') grade_year, class_name,
+		class_type, grade_rank from class c, grade g
+		where g.class_no=c.class_no and std_no=#{std_no} and
+		to_char(class_startdate,'yyyy')=#{year}
+		and grade_semester=#{semester} order by class_name
+	</select>
+	<insert id="insert">
+		insert into grade values(#{grade_no},#{grade_regcredit},#{grade_getcredit},
+		#{grade_score},#{grade_semester},#{grade_level},#{std_no},#{class_no},#{grade_rank})
+	</insert>
+	<select id="selectOne" resultType="grade_vo">
+		select grade_no,grade_regcredit,grade_getcredit,grade_score,grade_semester,
+		grade_level,std_no,class_no from grade where grade_no=#{grade_no}
+	</select>
+	<update id="update">
+		update grade set grade_regcredit=#{grade_regcredit},grade_getcredit=#{grade_getcredit},
+		grade_score=#{grade_score},grade_semester=#{grade_semester},grade_level=#{grade_level},
+		std_no=#{std_no},class_no=#{class_no} where grade_no=#{grade_no}
+	</update>
+	<delete id="delete">
+		delete grade where grade_no=#{grade_no}
+	</delete>
+</mapper>
