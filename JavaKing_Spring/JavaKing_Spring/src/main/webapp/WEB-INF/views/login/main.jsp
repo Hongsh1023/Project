@@ -323,8 +323,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		&nbsp;&nbsp;·&nbsp;&nbsp;
+			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav5" class = "nav">
                 <a href = "adminStudentInfo.do" class = "nav"><font color="red">관리자</font></a><br>
             </div>

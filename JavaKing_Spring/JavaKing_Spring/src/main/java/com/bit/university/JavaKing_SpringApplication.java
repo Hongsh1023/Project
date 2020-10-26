@@ -6,10 +6,10 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @ServletComponentScan
 @SpringBootApplication
-public class Javaking1024Application {
+public class JavaKing_SpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Javaking1024Application.class, args);
+		SpringApplication.run(JavaKing_SpringApplication.class, args);
 	}
 
 }
