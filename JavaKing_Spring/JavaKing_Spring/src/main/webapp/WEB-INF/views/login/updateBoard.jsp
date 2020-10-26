@@ -296,7 +296,7 @@ footer {
 	<nav>
 		<div id = "nav_boxes">
 			<div id = "nav1" class = "nav">
-				<a href = "" class = "nav">학사정보</a><br>
+				<a href = "studentInfo.do" class = "nav">학사정보</a><br>
 			</div>
 			<div id = "nav_window1" class ="nav_window">
 				<div id = "nav_title1" class = "nav_title">
@@ -310,7 +310,7 @@ footer {
 								학적
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">학적조회</a></p></li>
+								<li><p class = "p2"><a href = "studentInfo.do">학적조회</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -318,9 +318,9 @@ footer {
 								수업
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">수강신청</a></p></li>
-								<li><p class = "p2"><a href = "">수강내역조회</a></p></li>
-								<li><p class = "p2"><a href = "">시간표조회</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">수강신청</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">수강내역조회</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">시간표조회</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -328,7 +328,7 @@ footer {
 								성적
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">성적조회</a></p></li>
+								<li><p class = "p2"><a href = "listGrade.do">성적조회</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -336,7 +336,7 @@ footer {
 								등록
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">등록조회</a></p></li>
+								<li><p class = "p2"><a href = "listReg.do">등록조회</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -352,7 +352,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav2" class = "nav">
-				<a href = "" class = "nav">알림마당</a><br>
+				<a href = "listBoard.do?board_boardno=100&board_category=알림마당" class = "nav">알림마당</a><br>
 			</div>
 			<div id = "nav_window2" class ="nav_window">
 				<div id = "nav_title2" class = "nav_title">
@@ -366,7 +366,7 @@ footer {
 								공지사항
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">공지사항</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=공지사항">공지사항</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -374,7 +374,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav3" class = "nav">
-				<a href = "" class = "nav">참여마당</a><br>
+				<a href = "listBoard.do?board_boardno=300&board_category=참여마당" class = "nav">참여마당</a><br>
 			</div>
 			<div id = "nav_window3" class ="nav_window">
 				<div id = "nav_title3" class = "nav_title">
@@ -388,8 +388,8 @@ footer {
 								중고장터
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">삽니다</a></p></li>
-								<li><p class = "p2"><a href = "">팝니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=삽니다">삽니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=팝니다">팝니다</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -397,8 +397,8 @@ footer {
 								게시판
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do">자유게시판</a></p></li>
-								<li><p class = "p2"><a href = "">익명게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=자유게시판">자유게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=익명게시판">익명게시판</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -406,7 +406,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav4" class = "nav">
-				<a href = "" class = "nav">도움마당</a><br>
+				<a href = "listBoard.do?board_boardno=200&board_category=도움마당" class = "nav">도움마당</a><br>
 			</div>
 			<div id = "nav_window4" class ="nav_window">
 				<div id = "nav_title4" class = "nav_title">
@@ -420,8 +420,8 @@ footer {
 								QnA
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "">시설 QnA</a></p></li>
-								<li><p class = "p2"><a href = "">학사 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=시설QNA">시설 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=학사QNA">학사 QnA</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -441,7 +441,7 @@ footer {
 	
 	<div class="property">
 	
-	<form action="updateBoardOk.do" method="post" enctype="multipart/form-data">
+	<form action="updateBoard.do" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="board_boardno" value="${b_vo.board_boardno}"> 
 		<input type="hidden" name="board_no" value="${b_vo.board_no}">
 		분류:<select name="board_category">
@@ -464,8 +464,8 @@ footer {
 		</c:if>
 		
 		<hr>
-			<input type="hidden" name="oldFname" value="${b_vo.board_fname}">
-			첨부파일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <input type="file" name="board_fname">
+			<input type="hidden" name="board_fname" value="${b_vo.board_fname}">
+			첨부파일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| <input type="file" name="upload_file">
 		<hr>
 		</div>
 	

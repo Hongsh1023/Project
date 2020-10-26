@@ -2,6 +2,8 @@ package com.bit.university.vo;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,8 +12,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BoardVo {
-	
-	private int rownum;
+
+	private int rn;
 	private int board_no;
 	private int board_boardno;
 	private String board_category;
@@ -22,9 +24,11 @@ public class BoardVo {
 	private String board_pwd;
 	private String board_fname;
 	private int std_no;
-	
+	private MultipartFile upload_file;
+
+
 	public BoardVo(int board_no, int board_boardno, String board_category, String board_title, String board_content,
-			Date board_regdate, int board_hit, String board_pwd, String board_fname, int std_no) {
+			Date board_regdate, int board_hit, String board_pwd, String board_fname, int std_no, MultipartFile upload_file) {
 		super();
 		this.board_no = board_no;
 		this.board_boardno = board_boardno;
@@ -36,11 +40,10 @@ public class BoardVo {
 		this.board_pwd = board_pwd;
 		this.board_fname = board_fname;
 		this.std_no = std_no;
+		this.upload_file = upload_file;
 	}
-	
-	public BoardVo(int board_no, String board_title) {
-		super();
-		this.board_no = board_no;
-		this.board_title = board_title;
-	}
+
+
+
+
 }

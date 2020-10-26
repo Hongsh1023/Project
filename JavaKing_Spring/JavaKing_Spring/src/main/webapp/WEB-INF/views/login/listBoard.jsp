@@ -8,14 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <title>:: 비트대학교 ::</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-   function change_category(board_category){
-      location.href="listBoard.do?board_category="+encodeURI(encodeURI(board_category));
-   }
-   
-   function change_pagesize(page_size){
-	   location.href="listBoard.do?page_size="+page_size; 
-	}
+$(function(){
+	$("#change_category").change(function(){
+		var board_category = $("#change_category > option:selected").html();
+		alert(board_category);
+		$(location).attr('href', "listBoard.do?board_category="+board_category);
+	});
+
+	$("#change_pagesize").change(function(){
+		var page_size = eval($("#change_pagesize > option:selected").val());
+		$(location).attr('href', "listBoard.do?page_size="+page_size);
+	});
+});
 </script>
 
 <style type="text/css">
@@ -383,7 +389,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav2" class = "nav">
-				<a href = "listBoard.do?board_boardno=100&board_category=%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD" class = "nav">알림마당</a><br>
+				<a href = "listBoard.do?board_boardno=100" class = "nav">알림마당</a><br>
 			</div>
 			<div id = "nav_window2" class ="nav_window">
 				<div id = "nav_title2" class = "nav_title">
@@ -397,7 +403,7 @@ footer {
 								공지사항
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD">공지사항</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=공지사항">공지사항</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -405,7 +411,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav3" class = "nav">
-				<a href = "listBoard.do?board_boardno=300&board_category=%25EC%259E%2590%25EC%259C%25A0%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590" class = "nav">참여마당</a><br>
+				<a href = "listBoard.do?board_boardno=300" class = "nav">참여마당</a><br>
 			</div>
 			<div id = "nav_window3" class ="nav_window">
 				<div id = "nav_title3" class = "nav_title">
@@ -419,8 +425,8 @@ footer {
 								중고장터
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%2582%25BD%25EB%258B%2588%25EB%258B%25A4">삽니다</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25ED%258C%259D%25EB%258B%2588%25EB%258B%25A4">팝니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=삽니다">삽니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=팝니다">팝니다</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -428,8 +434,8 @@ footer {
 								게시판
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%259E%2590%25EC%259C%25A0%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590">자유게시판</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%259D%25B5%25EB%25AA%2585%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590">익명게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=자유게시판">자유게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=익명게시판">익명게시판</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -437,7 +443,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav4" class = "nav">
-				<a href = "listBoard.do?board_boardno=200&board_category=%25EC%258B%259C%25EC%2584%25A4QNA" class = "nav">도움마당</a><br>
+				<a href = "listBoard.do?board_boardno=200" class = "nav">도움마당</a><br>
 			</div>
 			<div id = "nav_window4" class ="nav_window">
 				<div id = "nav_title4" class = "nav_title">
@@ -451,8 +457,8 @@ footer {
 								QnA
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=%25EC%258B%259C%25EC%2584%25A4QNA">시설 QnA</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=%25ED%2595%2599%25EC%2582%25ACQNA">학사 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=시설QNA">시설 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=학사QNA">학사 QnA</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -471,7 +477,7 @@ footer {
 				<a href="listBoard.do?board_boardno=300">참여마당</a>
 			</div> 
 			<div class="boarddiv">
-				<select onchange="change_category(this.value)">
+				<select id="change_category">
 					<option>====카테고리 선택====</option>
 					<c:forEach var="cl" items="${category_list}" begin="0" end="${category_list.size()}">
 						<option value="${cl}">${cl}</option>
@@ -479,7 +485,7 @@ footer {
 				</select>
 			</div>
 			<div class="pagenum">
-				<select onchange="change_pagesize(this.value)">
+				<select id="change_pagesize">
 					<option>====한번에 볼 게시물 수 선택====</option>
 					<option value="5">5개씩 보기</option>
 					<option value="10">10개씩 보기</option>
@@ -500,7 +506,7 @@ footer {
 				</tr>
 				<c:forEach var="b" items="${list}">
 				<tr>
-					<td>${b.rownum}</td>
+					<td>${b.rn}</td>
 					<td>${b.board_category}</td>
 					<td><a href="detailBoard.do?board_no=${b.board_no}">${b.board_title}</a></td>
 					<td>${b.std_no}</td>
