@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="device-width, initial-scale=1">
 <title>:: 비트대학교 ::</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" media="screen">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style type="text/css">
 
@@ -298,6 +298,7 @@ footer {
 	#tables{
 		margin-left: 80px;
 		margin-right: 80px;
+		padding-bottom: 50px;
 		background-color: #ffffff;
 		width : 800px;
 		border : 1px solid gray;
@@ -370,6 +371,15 @@ footer {
 }
 	
 </style>
+<script type="text/javascript">
+		var pagePrint = function() {
+			document.body.innerHTML = tables2.innerHTML;
+			window.print();
+			location.reload();
+
+			
+		};
+</script>
 </head>
 <body>
 </head>
@@ -379,7 +389,7 @@ footer {
 	</div>
 	<div id = "hello_box">
 		<span id = "name">
-			${name}
+			${std_name}
 		</span>
 		님 반갑습니다.&nbsp;&nbsp;
 		<img src="../image/lock.png" id= "lock_image">
@@ -388,7 +398,7 @@ footer {
 	<hr>
 </header>
 <body>
-		<nav>
+	<nav>
 		<div id = "nav_boxes">
 			<div id = "nav1" class = "nav">
 				<a href = "studentInfo.do" class = "nav">학사정보</a><br>
@@ -414,8 +424,8 @@ footer {
 							</div>
 							<ul class= "inside_list">
 								<li><p class = "p2"><a href = "classreg.do">수강신청</a></p></li>
-								<li><p class = "p2"><a href = "classSearch.do">수강내역조회</a></p></li>
-								<li><p class = "p2"><a href = "classSearch.do">시간표조회</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">수강내역조회</a></p></li>
+								<li><p class = "p2"><a href = "classreg.do">시간표조회</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -447,7 +457,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav2" class = "nav">
-				<a href = "listBoard.do?board_boardno=100&board_category=%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD" class = "nav">알림마당</a><br>
+				<a href = "listBoard.do?board_boardno=100&board_category=알림마당" class = "nav">알림마당</a><br>
 			</div>
 			<div id = "nav_window2" class ="nav_window">
 				<div id = "nav_title2" class = "nav_title">
@@ -461,7 +471,7 @@ footer {
 								공지사항
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD">공지사항</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=공지사항">공지사항</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -469,7 +479,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav3" class = "nav">
-				<a href = "listBoard.do?board_boardno=300&board_category=%25EC%259E%2590%25EC%259C%25A0%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590" class = "nav">참여마당</a><br>
+				<a href = "listBoard.do?board_boardno=300&board_category=참여마당" class = "nav">참여마당</a><br>
 			</div>
 			<div id = "nav_window3" class ="nav_window">
 				<div id = "nav_title3" class = "nav_title">
@@ -483,8 +493,8 @@ footer {
 								중고장터
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%2582%25BD%25EB%258B%2588%25EB%258B%25A4">삽니다</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25ED%258C%259D%25EB%258B%2588%25EB%258B%25A4">팝니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=삽니다">삽니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=팝니다">팝니다</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -492,8 +502,8 @@ footer {
 								게시판
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%259E%2590%25EC%259C%25A0%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590">자유게시판</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%259D%25B5%25EB%25AA%2585%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590">익명게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=자유게시판">자유게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=익명게시판">익명게시판</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -501,7 +511,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav4" class = "nav">
-				<a href = "listBoard.do?board_boardno=200&board_category=%25EC%258B%259C%25EC%2584%25A4QNA" class = "nav">도움마당</a><br>
+				<a href = "listBoard.do?board_boardno=200&board_category=도움마당" class = "nav">도움마당</a><br>
 			</div>
 			<div id = "nav_window4" class ="nav_window">
 				<div id = "nav_title4" class = "nav_title">
@@ -515,42 +525,9 @@ footer {
 								QnA
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=%25EC%258B%259C%25EC%2584%25A4QNA">시설 QnA</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=%25ED%2595%2599%25EC%2582%25ACQNA">학사 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=시설QNA">시설 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=학사QNA">학사 QnA</a></p></li>
 							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			&nbsp;&nbsp;·&nbsp;&nbsp;
-			<div id = "nav5" class = "nav">
-                <a href = "adminStudentInfo.do" class = "nav"><font color="red">관리자</font></a><br>
-            </div>
-            <div id = "nav_window5" class ="nav_window">
-                <div id = "nav_title5" class = "nav_title">
-                    <br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;관리자
-                </div>
-                <div id ="nav_right5" class = "nav_right">
-                    <div id = "nav_right_list5" class = "nav_right_list">
-                        <div class = "nav_right_box">
-                            <div class = "nav_right_title">
-                                관리자메뉴
-                            </div>
-                            <ul class= "inside_list">
-                                <li><p class = "p2"><a href = "adminStudentInfo.do">기본정보 등록</a></p></li>
-                                <li><p class = "p2"><a href = "insertRegister.do">등록금 등록</a></p></li>
-                                <li><p class = "p2"><a href = "insertProfessor.do">교수 등록</a></p></li>
-                            </ul>
-                        </div>
-                        <div class = "nav_right_box">
-                            <div class = "nav_right_title">
-                                &nbsp;&nbsp;
-						</div>
-						<ul class= "inside_list">
-							<li><p class = "p2"><a href = "adminClass.do">강의 등록</a></p></li>
-							<li><p class = "p2"><a href = "adminGrade.do">성적 등록</a></p></li>
-						</ul>
 						</div>
 					</div>
 				</div>
@@ -598,7 +575,7 @@ footer {
 				</c:forEach>
 			</table>
 			</div>
-		<input type="submit" value="성적표 출력" id="submit">
+		
 		</div>
 		<div id="tables2">
 	        <div class="container3">  		
@@ -624,6 +601,7 @@ footer {
 					</c:forEach>
 				</table>
 			</div>
+			<input type="button" value="성적표 출력" id="submit" onClick="pagePrint()">
 		</div>
 	</div>
 	</form>
