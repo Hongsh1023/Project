@@ -14,21 +14,21 @@ $(function(){
 
 	$("#btn_search").click(function(){	
 		var data = $("#s").serialize();
-		$(location).attr("href","/classreg.do"+data);
+		$(location).attr("href","/login/classreg.do"+data);
 	});
 	
 	$(document).on("click",".btn_insert",function(){	
 		var classno = $(this).attr("classno");
 		var data = "?classno="+classno;
-		$(location).attr("href","/classregInsert.do"+data);
+		$(location).attr("href","/login/classregInsert.do"+data);
 	});
 	
 	$(document).on("click",".btn_delete",function(){	
 		var classregno = $(this).attr("classregno");
 		var data = "?classregno="+classregno;
-		$(location).attr("href","/classregDelete.do"+data);
+		$(location).attr("href","/login/classregDelete.do"+data);
 	});
-	
+
 });
 </script>
 
@@ -285,7 +285,7 @@ footer {
 	</div>
 	<div id = "hello_box">
 		<span id = "name">
-			${name}
+			${std_name}
 		</span>
 		님 반갑습니다.&nbsp;&nbsp;
 		<img src="../image/lock.png" id= "lock_image">
@@ -353,7 +353,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav2" class = "nav">
-				<a href = "listBoard.do?board_boardno=100&board_category=%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD" class = "nav">알림마당</a><br>
+				<a href = "listBoard.do?board_boardno=100&board_category=알림마당" class = "nav">알림마당</a><br>
 			</div>
 			<div id = "nav_window2" class ="nav_window">
 				<div id = "nav_title2" class = "nav_title">
@@ -367,7 +367,7 @@ footer {
 								공지사항
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD">공지사항</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=100&board_category=공지사항">공지사항</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -375,7 +375,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav3" class = "nav">
-				<a href = "listBoard.do?board_boardno=300&board_category=%25EC%259E%2590%25EC%259C%25A0%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590" class = "nav">참여마당</a><br>
+				<a href = "listBoard.do?board_boardno=300&board_category=참여마당" class = "nav">참여마당</a><br>
 			</div>
 			<div id = "nav_window3" class ="nav_window">
 				<div id = "nav_title3" class = "nav_title">
@@ -389,8 +389,8 @@ footer {
 								중고장터
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%2582%25BD%25EB%258B%2588%25EB%258B%25A4">삽니다</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25ED%258C%259D%25EB%258B%2588%25EB%258B%25A4">팝니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=삽니다">삽니다</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=팝니다">팝니다</a></p></li>
 							</ul>
 						</div>
 						<div class = "nav_right_box">
@@ -398,8 +398,8 @@ footer {
 								게시판
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%259E%2590%25EC%259C%25A0%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590">자유게시판</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=%25EC%259D%25B5%25EB%25AA%2585%25EA%25B2%258C%25EC%258B%259C%25ED%258C%2590">익명게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=자유게시판">자유게시판</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=300&board_category=익명게시판">익명게시판</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -407,7 +407,7 @@ footer {
 			</div>
 			&nbsp;&nbsp;·&nbsp;&nbsp;
 			<div id = "nav4" class = "nav">
-				<a href = "listBoard.do?board_boardno=200&board_category=%25EC%258B%259C%25EC%2584%25A4QNA" class = "nav">도움마당</a><br>
+				<a href = "listBoard.do?board_boardno=200&board_category=도움마당" class = "nav">도움마당</a><br>
 			</div>
 			<div id = "nav_window4" class ="nav_window">
 				<div id = "nav_title4" class = "nav_title">
@@ -421,8 +421,8 @@ footer {
 								QnA
 							</div>
 							<ul class= "inside_list">
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=%25EC%258B%259C%25EC%2584%25A4QNA">시설 QnA</a></p></li>
-								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=%25ED%2595%2599%25EC%2582%25ACQNA">학사 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=시설QNA">시설 QnA</a></p></li>
+								<li><p class = "p2"><a href = "listBoard.do?board_boardno=200&board_category=학사QNA">학사 QnA</a></p></li>
 							</ul>
 						</div>
 					</div>
@@ -472,13 +472,14 @@ footer {
 				<th>과목명</th>
 				<td>
 				<form id="s">
+					<input type="hidden" name="site" id="site" value="1">
 					<input type="text" name="search" id="search"><button id="btn_search">조회</button>
 				</form>
 					<font color="${color }">${msg }</font>
 					<th>총신청학점</th>
-					<td>${cCredit }</td>
+					<td>&nbsp;&nbsp;${cCredit }&nbsp;&nbsp;</td>
 					<th>신청과목수</th>
-					<td>${cSubject }</td>
+					<td>&nbsp;&nbsp;${cSubject }&nbsp;&nbsp;</td>
 				</td>
 				
 			</tr>
@@ -487,7 +488,6 @@ footer {
 	 <!-- 수강신청내역 -->
 	 <div class="수강신청테이블">
 		 <div class="수강신청란" style="float:lefT">
-		 <form id="inputInsert"></form>
 				<table border="1" class="searchR">
 					<tr>
 						<th>순번</th>
@@ -508,7 +508,8 @@ footer {
 							<td>${sc.pro_name }(${sc.pro_no })</td>
 							<td>${sc.class_dayofweek } ${sc.class_time }</td>
 							<td>
-								<button class="btn_insert" classno="${sc.class_no }">신청</button>
+							<div class="inputInsert"></div>
+								<button class="btn_insert" site="2" classno="${sc.class_no }">신청</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -541,7 +542,6 @@ footer {
 		</div>
 	<div class="신청결과">
 		<table border="1" class="basic">
-		<form id="delete"></form>
 			<tr>
 				<th>순번</th>
 				<th>강의명</th>
@@ -566,7 +566,7 @@ footer {
 					<td>${cr.pro_name } (${cr.pro_no })</td>
 					<td>${cr.class_dayofweek } ${cr.class_time }</td>
 					<td>${cr.classreg_retake }</td>
-					<td><button class="btn_delete" classregno=${cr.classreg_no } >삭제</button></a></td>
+					<td><button class="btn_delete" site="3" classregno=${cr.classreg_no } >삭제</button></a></td>
 				</tr>
 			</c:forEach>
 		</table>
