@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="device-width, initial-scale=1">
 <title>:: 비트대학교 ::</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" media="screen">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style type="text/css">
 
@@ -298,6 +298,7 @@ footer {
 	#tables{
 		margin-left: 80px;
 		margin-right: 80px;
+		padding-bottom: 50px;
 		background-color: #ffffff;
 		width : 800px;
 		border : 1px solid gray;
@@ -370,6 +371,15 @@ footer {
 }
 	
 </style>
+<script type="text/javascript">
+		var pagePrint = function() {
+			document.body.innerHTML = tables2.innerHTML;
+			window.print();
+			location.reload();
+
+			
+		};
+</script>
 </head>
 <body>
 </head>
@@ -565,7 +575,7 @@ footer {
 				</c:forEach>
 			</table>
 			</div>
-		<input type="submit" value="성적표 출력" id="submit">
+		
 		</div>
 		<div id="tables2">
 	        <div class="container3">  		
@@ -591,6 +601,7 @@ footer {
 					</c:forEach>
 				</table>
 			</div>
+			<input type="button" value="성적표 출력" id="submit" onClick="pagePrint()">
 		</div>
 	</div>
 	</form>
