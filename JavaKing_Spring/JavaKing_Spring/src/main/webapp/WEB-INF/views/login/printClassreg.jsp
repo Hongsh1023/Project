@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>:: 비트대학교 ::</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" media="screen">
 <style type="text/css">
 
 a {
@@ -235,6 +236,14 @@ table{
 }
 
 </style>
+<script type="text/javascript">
+var pagePrint = function() {
+	document.body.innerHTML = printArea.innerHTML;
+	window.print();
+	location.reload();
+};
+
+</script>
 </head>
 <header>
 	<div id = "logo">
@@ -391,6 +400,8 @@ table{
 	<hr>
 
 	<div id = "section_main">
+	<button onclick="pagePrint()">출력</button>
+	<div id="printArea">
 	<h2>수강신청내역</h2>
 <h4>(학생보관용)</h4>
 <hr>
@@ -408,7 +419,7 @@ table{
 			</tr>
 			<c:forEach var="cr" items="${crList }">
 				<tr>
-					<td>${cr.rownum }<input type="hidden" value="${cr.classreg_no }"></td>
+					<td>${cr.rn }<input type="hidden" value="${cr.classreg_no }"></td>
 					<td>${cr.class_name }</td>
 					<td>${cr.std_level }</td>
 					<td>${cr.std_semester }</td>
@@ -424,12 +435,13 @@ table{
 		<table border="1" class="search">
 			<tr>
 					<th>총신청학점</th>
-					<td>${cCredit }</td>
+					<td>&nbsp;&nbsp;${cCredit }&nbsp;&nbsp;</td>
 					<th>신청과목수</th>
-					<td>${cSubject }</td>
+					<td>&nbsp;&nbsp;${cSubject }&nbsp;&nbsp;</td>
 			</tr>
-		</table>
-	</div>
+		</table><br><br>
+		</div>
+		</div>
 	</div>
 	</div>
 </section>
